@@ -1,0 +1,10 @@
+
+<div class="details">
+<h1   >Detalji</h1>
+<div class="detalji"  *ngIf="comic$ | async as comic">
+  <h3 class="detalji">{{ comic.text }}</h3>
+  <img src ="{{comic.link}}" style="width:400px;height:450px;" />  
+  <p>Edicija: {{ comic.edition }}</p>
+  <p>U kolekciji:{{comic.own? "Da":"Ne"}} </p>
+  
+</div>

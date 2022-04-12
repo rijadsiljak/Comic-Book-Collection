@@ -1,0 +1,11 @@
+.form label 
+{
+    padding: 15px;
+    align-items: right;
+}
+.form input
+{
+ 
+    padding-inline-start: 10px;
+    align-items: right; 
+}

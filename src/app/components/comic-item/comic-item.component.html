@@ -1,0 +1,9 @@
+
+<div  *ngIf="comic!=null"  >
+  
+    <img [ngClass]="{own: comic.own}" class="comic" (dblclick)="onToggle(comic)" src ="{{comic.link}}" style="width:200px;height:250px;" align-items="center"/> 
+    <div >
+    <a [routerLink]="['/details', comic.id]" class="comics">{{comic.text}}</a>
+    <p class="comics">U kolekciji: {{comic.own? "Da":"Ne"}}</p>
+    </div> 
+</div>
