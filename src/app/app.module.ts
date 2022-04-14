@@ -17,7 +17,8 @@ import { UpdateComponent } from './components/admin/update/update.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { getMatFormFieldMissingControlError, MatFormFieldModule } from '@angular/material/form-field';
+
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -43,6 +44,7 @@ import { FormsModule } from '@angular/forms';
   MatDialogModule,
   BrowserAnimationsModule,
   MatFormFieldModule,
+
   FormsModule
   ],
   providers: [],

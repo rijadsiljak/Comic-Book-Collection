@@ -29,8 +29,32 @@
       "text": "TAJANSTVENI SAMOSTAN",
       "ordinal": "4",
       "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_4.jpg",
-      "own": false,
+      "own": true,
       "edition": "Slobodna Dalmacija"
+    },
+    {
+      "text": "ŽIVI POKOPANI",
+      "edition": "Slobodna Dalmacija",
+      "ordinal": "5",
+      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_5.jpg",
+      "own": true,
+      "id": 5
+    },
+    {
+      "text": "BIJELA INDIJANKA",
+      "edition": "Slobodna Dalmacija",
+      "ordinal": "6",
+      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_6.jpg",
+      "own": true,
+      "id": 7
+    },
+    {
+      "text": "KRIVOTVORITELJI",
+      "edition": "Slobodna Dalmacija",
+      "ordinal": "7",
+      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_7.jpg",
+      "own": true,
+      "id": "8"
     }
   ]
 }

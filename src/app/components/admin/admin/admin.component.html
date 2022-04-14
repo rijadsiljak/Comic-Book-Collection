@@ -1,6 +1,14 @@
 
 <div class="grid-container">
-    
+    <div class="item2" >
+
+        <fa-icon [icon]="faplus"  
+
+        (click)="toggleAddComic()" > </fa-icon>
+        <app-insert  (onAddTask)="addComic({})"></app-insert>
+    </div>
+
+
     <div class="item3">
 <table style="width:100%" algin="right">
 <tr>
