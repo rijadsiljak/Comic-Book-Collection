@@ -61,7 +61,6 @@ li {
   align-items: center;
   justify-content: center;
   display: flex;
-<<<<<<< HEAD
 }
 
 .main {
@@ -76,8 +75,6 @@ li {
   align-items: center;
   justify-content: center;
   display: flex;
-=======
->>>>>>> 18b710e (CRUD)
 }
 
 .container-header {
@@ -325,19 +322,9 @@ float: right;
 .comic.no {
   border-left: 5px inset rgb(220, 16, 16);
 }
-<<<<<<< HEAD
 
 .comicList {
  
   text-align: center;
   width: min-content;
 }
-=======
-.comics {
-  display: flex;
-  align-items: left;
-  justify-content: space-between;
-  padding: 5px 7px;
-}
-
->>>>>>> 18b710e (CRUD)

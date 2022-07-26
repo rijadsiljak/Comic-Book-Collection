@@ -28,13 +28,19 @@ export class ComicDetailComponent implements OnInit {
     private route: ActivatedRoute
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 749a40a (My Collection)
   ) { 
     
     //this.readComic(); 
   }
+<<<<<<< HEAD
 =======
   ) { this.readComic(); }
 >>>>>>> 18b710e (CRUD)
+=======
+>>>>>>> 749a40a (My Collection)
 
   Comic: any = [];
   ngOnInit() {
@@ -70,12 +76,18 @@ export class ComicDetailComponent implements OnInit {
 
   readComic() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.apiService.getComic(id).subscribe((comics) => {
 =======
     this.apiService.getComic('id').subscribe((comics) => {
 >>>>>>> 18b710e (CRUD)
+=======
+    
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.apiService.getComic(id).subscribe((comics) => {
+>>>>>>> 749a40a (My Collection)
       this.comics = comics;
     })
   }
