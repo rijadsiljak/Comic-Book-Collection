@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,18 +10,65 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+
+  background-color: rgb(6, 23, 40);
 }
 
-.comic
-{
-  width:1000px;height:1150px;
+nav {
+  background-color: rgb(6, 23, 40);
+
+}
+
+a {
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  color-scheme: inherit;
+  text-decoration: none;
+
+}
+
+li {
+  list-style: none;
+}
+
+.comic {
+  width: 1000px;
+  height: 1150px;
+}
+.images {
+  max-width: 200px;
+  margin: 10px auto;
+
+  max-height: 200px;
+  border: 3px solid steelblue;
+  padding: 20px;
+  border-radius: 1px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
 }
 .container {
   max-width: auto;
   margin: 10px auto;
-  overflow: auto;
+
   min-height: 300px;
   border: 3px solid steelblue;
+  padding: 20px;
+  border-radius: 1px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.main {
+  max-width: auto;
+  margin: 10px auto;
+
+  min-height: 300px;
+
   padding: 20px;
   border-radius: 1px;
   text-align: center;
@@ -32,23 +80,25 @@ body {
 .container-header {
   max-width: 1000px;
   margin: 10px auto;
-  overflow: auto;
+
   min-height: 300px;
 
   padding: 20px;
   border-radius: 1px;
   text-align: justify;
 }
+
 .mini {
   max-width: 200px;
-  margin: 10px ;
-  overflow: auto;
+  margin: 10px;
+
   min-height: 50px;
   border: 3px solid steelblue;
   padding: 20px;
   border-radius: 1px;
   align-items: center;
 }
+
 .btn {
   display: inline-block;
   background: #000;
@@ -62,9 +112,11 @@ body {
   font-size: 15px;
   font-family: inherit;
 }
+
 .btn:focus {
   outline: none;
 }
+
 .btn:active {
   transform: scale(0.98);
 }
@@ -105,35 +157,106 @@ body {
   height: 20px;
 }
 
-.serv ul {
+.serv div
+ {
+  justify-content: center;
   display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
+  padding-inline-start: 0cm;
+  
+ }
+
+ 
+body { 
+  position: absolute;
+  padding: 0 0;
+  margin: 0 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  overflow: auto;
+}
+.paginator {
+
+    float: right;
+
+  clear: both;
 }
 
-.serv  li {
+.basic-container {
+height: 100%;
+width: 100%;
+overflow: auto;
+}
+
+.version-info {
+font-size: 8pt;
+float: right;
+}
+
+.serv ul {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:flex;
+  padding: 0px;
+  width: 1000px;
+}
+.login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+  border:rgb(255, 255, 255);
+  border-style: inset;
+  border-spacing: ch;
+}
+
+.serv li {
+  
   list-style: none;
-  flex: 0 0 33.333333%;
+ margin-bottom: 25px;
+  flex: 1 3 33.333333%;
 }
 
 .align {
 
-    max-width: auto;
-    margin: 30px auto;
-    overflow: auto;
-    min-height: auto;
-    text-align: center;
-     
-}
-.detalji
-{  text-decoration: none;
-  font-size: 45px;
-font-family: "Poppins", sans-serif;
+  max-width: auto;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: auto;
+  text-align: center;
 
-text-align: center;
 }
-.details
-{
+
+
+
+.star {
+  visibility:hidden;
+  font-size:30px;
+  cursor:pointer;
+  color: #fff;
+}
+.star:before {
+ content: "\2605";
+ position: absolute;
+ color:rgb(255, 255, 255);
+ visibility:visible;
+}
+.star:checked:before {
+ content: "\2605";
+ color:gold;
+ position: absolute;
+}
+.detalji {
+  text-decoration: none;
+  font-size: 45px;
+  font-family: "Poppins", sans-serif;
+
+  text-align: center;
+}
+
+.details {
   max-width: 800px;
   margin: 30px auto;
   overflow: auto;
@@ -141,26 +264,31 @@ text-align: center;
   border: 3px solid steelblue;
   padding: 30px;
   border-radius: 4px;
-  
-text-align: center;
+
+  text-align: center;
 }
 
 
-.item3 { grid-area: main; }
-.item4 { grid-area: right; }
+.item3 {
+  grid-area: main;
+}
+
+.item4 {
+  grid-area: right;
+}
 
 
 .grid-container {
   display: grid;
   grid-template-areas:
     'menu  main   '
-   ;
+  ;
   gap: 10px;
   background-color: steelblue;
   padding: 10px;
 }
 
-.grid-container > div {
+.grid-container>div {
   background-color: whitesmoke;
   text-align: center;
   justify-content: center;
@@ -168,6 +296,8 @@ text-align: center;
   padding: 20px 0;
   font-size: 30px;
 }
+
+
 
 .comic {
   background: #f4f4f4;
@@ -182,19 +312,19 @@ text-align: center;
 
 .border {
 
-  border-style:groove;
+  border-style: groove;
 }
+
 .comic.own {
-  border: 5px inset  rgb(213, 183, 13);
+  border: 5px inset rgb(213, 183, 13);
 }
 
 .comic.no {
   border-left: 5px inset rgb(220, 16, 16);
 }
-.comics {
-  display: flex;
-  align-items: left;
-  justify-content: space-between;
-  padding: 5px 7px;
-}
 
+.comicList {
+ 
+  text-align: center;
+  width: min-content;
+}

@@ -30,30 +30,28 @@
   
           <div class="form-group">
             <label for="inputEmail3">Ordinal</label>
-            <input class="form-control" type="text" formControlName="ordinal">
+            <input class="form-control" type="text" formControlName="redni">
             <!-- error -->
             <div class="invalid-feedback" *ngIf="submitted && myForm.ordinal.errors?.required">
               Enter comic ordinal.
             </div>
            
           </div>
-  
-          <div class="form-group">
-            <label for="inputEmail3">Cover</label>
-            <input class="form-control" type="text" formControlName="cover">
-            <!-- error -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.cover.errors?.required">
-              Enter cover link.
-            </div>
           
-          </div>
-  
+            
           <div class="form-group">
             <label for="inputVerify3">Own</label>
             <input class="form-control" type="checkbox" formControlName="own">
            
            
           </div>
+          <div class="form-group">
+            <label for="inputVerify3">Wishlist</label>
+            <input class="star" type="checkbox" formControlName="wish">
+           
+           
+          </div>
+
   
           <div class="form-group">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>

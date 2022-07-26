@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe,PipeTransform } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,23 +22,34 @@ import { ListComponent } from './components/admin/list/list.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { ComicDetailComponent } from './components/comic-detail/comic-detail.component';
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserCreateComponent } from './components/admin/user-create/user-create.component';
+import { AdminComponent } from './components/admin/admin/admin.component';
+import { FileUploadComponent } from './components/admin/file-upload/file-upload.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     HeaderComponent,
-
     FooterComponent,
     PageNotFoundComponent,
-
     CreateComponent,
     EditComponent,
     ListComponent,
     ComicsComponent,
     ComicDetailComponent,
-    MyCollectionComponent
+    MyCollectionComponent,
+    LoginComponent,
+    UserCreateComponent,
+    AdminComponent,
+    FileUploadComponent,
+    UserListComponent
+  
 
   ],
   imports: [
@@ -50,7 +61,10 @@ import { MyCollectionComponent } from './components/my-collection/my-collection.
     BrowserAnimationsModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule,
+ 
+    
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

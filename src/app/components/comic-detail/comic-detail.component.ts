@@ -50,7 +50,7 @@ export class ComicDetailComponent implements OnInit {
 
 
       name: ['', [Validators.required]],
-      ordinal: ['', [Validators.required]],
+      redni: ['', [Validators.required]],
       edition: ['', [Validators.required]],
       cover: ['', [Validators.required]],
       own: []
@@ -80,7 +80,7 @@ export class ComicDetailComponent implements OnInit {
     this.apiService.getComic(id).subscribe(data => {
       this.detailsForm.setValue({
         name: data['name'],
-        ordinal: data['ordinal'],
+        ordinal: data['redni'],
         edition: data['edition'],
         cover: data['cover'],
         own: data['own'],

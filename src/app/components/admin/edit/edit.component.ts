@@ -29,10 +29,10 @@ export class EditComponent implements OnInit {
     this.editForm = this.fb.group({
   
       name: ['', [Validators.required]],
-      ordinal: ['', [Validators.required]],
+      redni: ['', [Validators.required]],
       edition: ['', [Validators.required]],
-      cover: ['', [Validators.required]],
-      own:[]
+      own:[],
+      wish:[]
     })
   }
 
@@ -47,10 +47,11 @@ export class EditComponent implements OnInit {
     this.apiService.getComic(id).subscribe(data => {
       this.editForm.setValue({   
         name: data['name'],
-        ordinal: data['ordinal'],
+        ordinal: data['redni'],
         edition: data['edition'],
         cover: data['cover'],
         own: data['own'],
+        wish: data['wish']
       });
     });
   }
@@ -58,10 +59,11 @@ export class EditComponent implements OnInit {
   updateComic() {
     this.editForm = this.fb.group({    
       name: ['', [Validators.required]],
-      ordinal: ['', [Validators.required]],
+      redni: ['', [Validators.required]],
       edition: ['', [Validators.required]],
       cover: ['', [Validators.required]],
-      own:[]
+      own:[],
+      wish:[]
     })
   }
   onSubmit() {

@@ -5,6 +5,7 @@ let express = require('express'),
    bodyParser = require('body-parser'),
    dbConfig = require('./database/db');
 
+
 // Connecting with mongo db
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
@@ -18,7 +19,7 @@ mongoose.connect(dbConfig.db, {
 )
 
 // Setting up port with express js
-const comicRoute = require('../server/Routes/comic.route')
+const comicRoute = require('../server/Routes/comic.route.js')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -36,6 +37,7 @@ const server = app.listen(port, () => {
 })
 
 // Find 404 and hand over to error handler
+
 app.use((req, res, next) => {
    next(createError(404));
 });

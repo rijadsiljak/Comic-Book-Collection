@@ -1,7 +1,7 @@
 export class Comic {
 
     name!: string;
-    ordinal!: string;
+    redni!: string;
     edition!: string;
     cover!: string;
     own!: boolean;

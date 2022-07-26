@@ -28,9 +28,11 @@ export class CreateComponent implements OnInit {
     this.comicForm = this.fb.group({
       name: ['', [Validators.required]],
       edition: ['', [Validators.required, ]],
-      ordinal: ['', [Validators.required, ]],
-      cover: ['', [Validators.required]],
-      own: [ ]
+      redni: ['', [Validators.required, ]],  
+      own: [ ],
+      wish: [ ]
+ 
+
     });
 
   }
@@ -47,7 +49,7 @@ export class CreateComponent implements OnInit {
       return this.apiService.createComic(this.comicForm.value).subscribe({
         complete: () => {
           console.log('Comic successfully created!'),
-            this.ngZone.run(() => this.router.navigateByUrl('/list'));
+            this.ngZone.run(() => this.router.navigateByUrl('/create'));
         },
         error: (e) => {
           console.log(e);

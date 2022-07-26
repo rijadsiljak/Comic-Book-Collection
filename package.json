@@ -130,7 +130,6 @@
     "core-util-is": "^1.0.3",
     "cors": "^2.8.5",
     "cosmiconfig": "^7.0.1",
-
     "critters": "^0.0.16",
     "cross-spawn": "^7.0.3",
     "crypto-random-string": "^2.0.0",
@@ -688,7 +687,6 @@
     "yargs-parser": "^21.0.1",
     "zone.js": "^0.11.5"
   },
- 
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.2.2",
     "@angular/cli": "~13.2.2",
@@ -702,7 +700,8 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "nodemon": "^2.0.19",
-    "typescript": "~4.5.2"},
+    "typescript": "~4.5.2"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

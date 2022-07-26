@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { number } = require('yargs');
 const Schema = mongoose.Schema;
 // Define collection and schema
 let Comic = new Schema({
@@ -11,11 +12,16 @@ let Comic = new Schema({
    edition: {
       type: String
    },
-   cover: {
-      type: String
-   },
    own: {
       type: Boolean
+   },
+   wish:
+   {
+      type: Boolean
+   },
+   redni:
+   {
+      type: Number
    }
 }, {
    collection: 'comics'

@@ -13,18 +13,17 @@
           <th scope="col center">Name</th>
           <th scope="col span">Ordinal</th>
           <th scope="col">Edition</th>
-          <th scope="col center">Cover</th>
-       
+          <th scope="col center">Cover</th>       
           <th scope="col center">Update/Delete</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let comic of Comic; let i = index" >
+        <tr *ngFor="let comic of Comic  ; let i = index  "  >
    
           <td>{{comic.name}}</td>
-          <td>{{comic.ordinal}}</td>
+          <td>{{comic.redni}}</td>
           <td>{{comic.edition}}</td>
-          <td class="containter"><img [ngClass]="{own: comic.own}" class="comic" src ="{{comic.cover}}" style="width:200px;height:250px;" />  </td>
+     <td class="containter"><img [ngClass]="{own: comic.own}" class="comic" src ="/assets/pictures/{{comic.redni}}.jpg" style="width:200px;height:250px;" />  </td>
           
           <td class="text-center edit-block">
             <span class="edit" [routerLink]="['/edit/', comic._id]">
@@ -32,8 +31,8 @@
             </span>
             <span class="delete" (click)="removeComic(comic, i)" [routerLink]="['/list']">
               <button type="button" class="btn btn-danger btn-sm">Delete</button>
-            </span>
-          </td>
+            </span> </td>
+          
         </tr>
       </tbody>
     </table>

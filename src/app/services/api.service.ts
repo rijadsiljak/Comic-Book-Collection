@@ -25,10 +25,28 @@ createComic(data:any): Observable<any> {
 
  }
 
+ //create a user
+
+ createUser({ data }: { data: any; }): Observable<any> {
+
+  let url=`${this.baseUri}/create-user`;
+  return this.http.post(url, data)
+    .pipe(
+      catchError(this.errorMgmt)
+    )
+
+ }
+
   // Get all comics lists
   getComics() {
     return this.http.get(`${this.baseUri}`);
   }
+
+    // Get all users lists
+    getUsers() {
+      const url= `${this.baseUri}/user-list`;
+      return this.http.get(url)
+    }
 
   getOwnedComics()  {
     const url= `${this.baseUri}/owned`;
@@ -45,6 +63,14 @@ createComic(data:any): Observable<any> {
     )
   }
 
+  updateComicOwn(id:any, data: any): Observable<any> {
+    let url = `${this.baseUri}/wish/${id}`;
+    return this.http.put(url, data, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt))
+    
+  }
+
+
   // Update comic
   updateComic(id:any, data:any): Observable<any> {
     let url = `${this.baseUri}/update/${id}`;
@@ -60,6 +86,15 @@ deleteComic(id:any): Observable<any> {
       catchError(this.errorMgmt)
     )
   }
+
+
+    // Delete user
+deleteUser(id:any): Observable<any> {
+  let url = `${this.baseUri}/delete-user/${id}`;
+  return this.http.delete(url, { headers: this.headers }).pipe(
+    catchError(this.errorMgmt)
+  )
+}
  // Error handling 
  errorMgmt(error: HttpErrorResponse) {
   let errorMessage = '';

@@ -1,17 +1,15 @@
-<div class="container-header">
+
+<nav *ngIf="router.url !=='/'">
+  <div class="container-header">
   <app-header></app-header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <ul class="comics">
-      <li> <a class="nav-link" routerLinkActive="active" routerLink="/list">View Comics</a></li>
-      <li> <a class="nav-link" routerLinkActive="active" routerLink="/create">Add Comics</a></li>
-      <li> <a class="nav-link" routerLinkActive="active" routerLink="/my-collection">My Collection</a></li>
-    </ul>
-  </nav>
-</div>
-<div class="container">
+ 
+</div></nav>
+
+<div  >
   <router-outlet></router-outlet>
 </div>
 
-<div>
-  <app-footer></app-footer>
+
+<div >
+  <app-footer *ngIf="router.url !=='/'"></app-footer>
 </div>

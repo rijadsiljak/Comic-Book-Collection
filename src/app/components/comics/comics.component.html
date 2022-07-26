@@ -1,34 +1,56 @@
-<div class="containter">
-    <!-- No data message -->
-    <div *ngIf="Comic.length <= 0">
-      <p class="alet alert-warning text-center">There is no comic added yet!</p>
-    </div>
-  
-  
-    <!-- Comics list -->
-    <table class="comic" *ngIf="Comic.length > 0">
-      <thead >
-        <tr>
-
-          <th scope="col right ">Name</th>
-          <th scope="col center ">Ordinal</th>
-          <th scope="col">Edition</th>
-          <th scope="col">Cover</th>
-       
-
-        </tr>
-      </thead>
-      <tbody >
-        <tr *ngFor="let comic of Comic; let i = index" >
-   
-          <td>{{comic.name}}</td>
-          <td scope="col right ">{{comic.ordinal}}</td>
-          <td>{{comic.edition}}</td>
-          <td>
-            
-            <img [routerLink]="['/comic-detail/', comic._id]" class="border" src ="{{comic.cover}}" style="width:200px;height:250px;" />  </td>
-          
-        </tr>
-      </tbody>
-    </table>
+<div >
+  <!-- No data message -->
+  <div *ngIf="Comic.length <= 0">
+    <p class="alet alert-warning text-center">There is no comic added yet!</p>
   </div>
+
+
+  <!-- Comics list 
+
+  <div class="comicList" *ngIf="Comic.length > 0">
+    <ul>
+      <li *ngFor="let comic of Comic; let i = index">
+        <div>
+          <a> <input value="{{comic.own}}"  class="star" type="checkbox" ></a>
+          <a>
+            <img [routerLink]="['/comic-detail/', comic._id]" class="border" src ="/assets/pictures/{{comic.redni}}.jpg"
+              style="width:200px;height:250px;" />
+          </a>
+       
+        </div>
+        <div> {{comic.edition}} </div>
+        <div> {{comic.name}}</div>
+        <div> #{{comic.redni}}</div>
+      </li>
+    </ul>
+  </div>
+</div>-->
+
+
+  <div class="container">
+    <ng-container  *ngFor="let comic of data; let i = index">
+      <ul>
+        <li >
+          <div >
+            <a> <input value="{{comic.own}}"  class="star" type="checkbox" ></a>
+            <a>
+              <img [routerLink]="['/comic-detail/', comic._id]" class="border" src ="/assets/pictures/{{comic.redni}}.jpg"
+                style="width:200px;height:250px;" />
+            </a>
+         
+          </div>
+          <div> {{comic.edition}} </div>
+          <div> {{comic.name}}</div>
+          <div> #{{comic.redni}}</div>
+        </li>
+      </ul>
+    </ng-container>
+
+  </div>
+
+  <mat-paginator  [length]="Comic.length"
+                [pageSize]="size"
+                [pageIndex]="page"
+                [pageSizeOptions]="[3,9, 18, 27]"
+                (page)="getData($event)">
+  </mat-paginator>
