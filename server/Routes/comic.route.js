@@ -77,6 +77,16 @@ comicRoute.route('/owned').get((req, res,next) => {
 })
 })
 
+comicRoute.route('/owned').get((req, res,next) => {
+  Comic.find({"own": true},(error, data) => {
+  if (error) {
+    return next(error)
+  } else {
+    res.json(data)
+  }
+})
+})
+
 // Get single comic
 comicRoute.route('/read/:id').get((req, res,next) => {
     Comic.findById(req.params.id, (error, data) => {
