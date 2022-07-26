@@ -21,6 +21,7 @@ import { EditComponent } from './components/admin/edit/edit.component';
 import { ListComponent } from './components/admin/list/list.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { ComicDetailComponent } from './components/comic-detail/comic-detail.component';
+<<<<<<< HEAD
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserCreateComponent } from './components/admin/user-create/user-create.component';
@@ -30,6 +31,8 @@ import { UserListComponent } from './components/admin/user-list/user-list.compon
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 
+=======
+>>>>>>> 18b710e (CRUD)
 
 
 @NgModule({
@@ -42,6 +45,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     EditComponent,
     ListComponent,
     ComicsComponent,
+<<<<<<< HEAD
     ComicDetailComponent,
     MyCollectionComponent,
     LoginComponent,
@@ -51,6 +55,10 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     UserListComponent
   
 
+=======
+    ComicDetailComponent
+   
+>>>>>>> 18b710e (CRUD)
   ],
   imports: [
     BrowserModule,

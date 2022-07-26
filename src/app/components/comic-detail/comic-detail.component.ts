@@ -27,10 +27,14 @@ export class ComicDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
 
+<<<<<<< HEAD
   ) { 
     
     //this.readComic(); 
   }
+=======
+  ) { this.readComic(); }
+>>>>>>> 18b710e (CRUD)
 
   Comic: any = [];
   ngOnInit() {
@@ -50,7 +54,11 @@ export class ComicDetailComponent implements OnInit {
 
 
       name: ['', [Validators.required]],
+<<<<<<< HEAD
       redni: ['', [Validators.required]],
+=======
+      ordinal: ['', [Validators.required]],
+>>>>>>> 18b710e (CRUD)
       edition: ['', [Validators.required]],
       cover: ['', [Validators.required]],
       own: []
@@ -61,9 +69,13 @@ export class ComicDetailComponent implements OnInit {
 
 
   readComic() {
+<<<<<<< HEAD
     
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.apiService.getComic(id).subscribe((comics) => {
+=======
+    this.apiService.getComic('id').subscribe((comics) => {
+>>>>>>> 18b710e (CRUD)
       this.comics = comics;
     })
   }
@@ -80,7 +92,11 @@ export class ComicDetailComponent implements OnInit {
     this.apiService.getComic(id).subscribe(data => {
       this.detailsForm.setValue({
         name: data['name'],
+<<<<<<< HEAD
         ordinal: data['redni'],
+=======
+        ordinal: data['ordinal'],
+>>>>>>> 18b710e (CRUD)
         edition: data['edition'],
         cover: data['cover'],
         own: data['own'],
