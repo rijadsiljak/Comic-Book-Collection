@@ -1,60 +1,19 @@
 {
-  "comics": [
+  "posts": [
     {
       "id": 1,
-      "text": "LOV NA VUKA",
-      "ordinal": "1",
-      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_1.jpg",
-      "own": true,
-      "edition": "Slobodna Dalmacija"
-    },
-    {
-      "id": 2,
-      "text": "RIJEČNI DUH",
-      "ordinal": "2",
-      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_2.jpg",
-      "own": true,
-      "edition": "Slobodna Dalmacija"
-    },
-    {
-      "id": 3,
-      "text": "KAPETANOVA TAJNA",
-      "ordinal": "3",
-      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_3.jpg",
-      "own": true,
-      "edition": "Slobodna Dalmacija"
-    },
-    {
-      "id": 4,
-      "text": "TAJANSTVENI SAMOSTAN",
-      "ordinal": "4",
-      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_4.jpg",
-      "own": true,
-      "edition": "Slobodna Dalmacija"
-    },
-    {
-      "text": "ŽIVI POKOPANI",
-      "edition": "Slobodna Dalmacija",
-      "ordinal": "5",
-      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_5.jpg",
-      "own": true,
-      "id": 5
-    },
-    {
-      "text": "BIJELA INDIJANKA",
-      "edition": "Slobodna Dalmacija",
-      "ordinal": "6",
-      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_6.jpg",
-      "own": true,
-      "id": 7
-    },
-    {
-      "text": "KRIVOTVORITELJI",
-      "edition": "Slobodna Dalmacija",
-      "ordinal": "7",
-      "link": "https://www.stripovi.com/naslovnice/Zagor/ZG_SD_7.jpg",
-      "own": true,
-      "id": "8"
+      "title": "json-server",
+      "author": "typicode"
     }
-  ]
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

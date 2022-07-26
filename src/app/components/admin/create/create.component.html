@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-employee">
+  
+      <div class="card card-outline-secondary">
+        <div class="card-header">
+          <h3 class="mb-0">Add Employee</h3>
+        </div>
+      <!-- form card register -->
+      <div class="card-body">
+        <form [formGroup]="comicForm"  (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="inputName">Name</label>
+            <input class="form-control" type="text" formControlName="name">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+              Name is required.
+            </div>
+            
+          </div>
+
+          <div class="form-group">
+            <label for="inputName">Edition</label>
+            <input class="form-control" type="text" formControlName="ordinal">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.edition.errors?.required">
+              Edition is required.
+            </div>
+            
+          </div>
+  
+          <div class="form-group">
+            <label for="inputEmail3">Ordinal</label>
+            <input class="form-control" type="text" formControlName="ordinal">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.ordinal.errors?.required">
+              Enter comic ordinal.
+            </div>
+           
+          </div>
+  
+          <div class="form-group">
+            <label for="inputEmail3">Cover</label>
+            <input class="form-control" type="text" formControlName="cover">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.cover.errors?.required">
+              Enter cover link.
+            </div>
+          
+          </div>
+  
+          <div class="form-group">
+            <label for="inputVerify3">Own</label>
+            <input class="form-control" type="checkbox" formControlName="own">
+           
+           
+          </div>
+  
+          <div class="form-group">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+          </div>
+        </form>
+  
+      </div>
+      </div>
+    </div><!-- form card register -->
+  </div>

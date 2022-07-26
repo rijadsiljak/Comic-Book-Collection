@@ -5,14 +5,17 @@ let Comic = new Schema({
    name: {
       type: String
    },
-   email: {
+   ordinal: {
       type: String
    },
-   designation: {
+   edition: {
       type: String
    },
-   phoneNumber: {
-      type: Number
+   cover: {
+      type: String
+   },
+   own: {
+      type: Boolean
    }
 }, {
    collection: 'comics'

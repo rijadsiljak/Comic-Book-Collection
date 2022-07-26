@@ -1,1 +1,0 @@
-module.exports={db:'mongodb+srv://curd_db_1:29cokoladno@cluster0.byayt.mongodb.net/?retryWrites=true&w=majority'};

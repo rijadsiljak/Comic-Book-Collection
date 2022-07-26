@@ -56,7 +56,7 @@ comicRoute.route('/update/:id').put((req, res, next) => {
 
 // Delete comic
 comicRoute.route('/delete/:id').delete((req, res, next) => {
-  comic.findOneAndRemove(req.params.id, (error, data) => {
+  Comic.findOneAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {

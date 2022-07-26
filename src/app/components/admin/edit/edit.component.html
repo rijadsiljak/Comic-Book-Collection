@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-comic">
+      <!-- form card register -->
+      <div class="card card-outline-secondary">
+        <div class="card-header">
+          <h3 class="mb-0">Edit Comic</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            
+       
+
+            <div class="form-group">
+              <label for="inputName">Name</label>
+              <input class="form-control" type="text" formControlName="name">
+              <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                Name is required.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3">Ordinal</label>
+              <input class="form-control" type="text" formControlName="ordinal">
+              <!-- error -->
+              <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                Enter comic's ordinal.
+              </div>          
+            </div>
+ 
+            <div class="form-group">
+                <label for="inputName">Edition</label>
+                <input class="form-control" type="text" formControlName="edition">
+                <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                  Edition is required.
+                </div>
+              </div>
+ 
+              <div class="form-group">
+                <label for="inputName">Cover</label>
+                <input class="form-control" type="text" formControlName="cover">
+                <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                  Enter comic's cover link
+                </div>
+              </div>
+
+         <div class="form-group">
+                <label for="inputName">Own</label>
+                <input class="form-control" type="checkbox" formControlName="own">
+         </div>
+              
+ 
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </div><!-- form  -->
+    </div>
+  </div>
+ 
