@@ -1,0 +1,20 @@
+.comic {
+    background: #f4f4f4;
+    margin: 0x;
+    padding: 0px 0px;
+    cursor: pointer;
+  }
+  
+  .comic.own {
+    border: 5px inset  rgb(213, 183, 13);
+  }
+  
+  .comic.no {
+    border-left: 5px inset rgb(220, 16, 16);
+  }
+  .comics {
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    padding: 5px 7px;
+  }

@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.comic
+{
+  width:1000px;height:1150px;
+}
+.container {
+  max-width: 290px;
+  margin: 10px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 3px solid steelblue;
+  padding: 20px;
+  border-radius: 1px;
+}
+.mini {
+  max-width: 200px;
+  margin: 10px ;
+  overflow: auto;
+  min-height: 50px;
+  border: 3px solid steelblue;
+  padding: 20px;
+  border-radius: 1px;
+  align-items: center;
+}
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px;
+}
+
+.serv ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+.serv  li {
+  list-style: none;
+  flex: 0 0 33.333333%;
+}
+
+.align {
+
+    max-width: 300px;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 300px;
+
+ 
+}
+.detalji
+{  text-decoration: none;
+  font-size: 45px;
+font-family: "Poppins", sans-serif;
+
+text-align: center;
+}
+.details
+{
+  max-width: 800px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 3px solid steelblue;
+  padding: 30px;
+  border-radius: 4px;
+  
+text-align: center;
+}
+
+
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu  main   '
+   ;
+  gap: 10px;
+  background-color: steelblue;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}

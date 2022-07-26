@@ -1,0 +1,12 @@
+
+
+<p class="container" >
+   
+<app-comic-item *ngFor="let comic of comics"
+(onToggleComicOwn)="onToggleComicOwn(comic)"
+[comic]="comic" > 
+
+</app-comic-item>
+
+
+</p>
