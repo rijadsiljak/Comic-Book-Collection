@@ -21,6 +21,7 @@ import { EditComponent } from './components/admin/edit/edit.component';
 import { ListComponent } from './components/admin/list/list.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { ComicDetailComponent } from './components/comic-detail/comic-detail.component';
+import { MyCollectionComponent } from './components/my-collection/my-collection.component';
 
 
 @NgModule({
@@ -28,27 +29,28 @@ import { ComicDetailComponent } from './components/comic-detail/comic-detail.com
     AppComponent,
 
     HeaderComponent,
-  
+
     FooterComponent,
     PageNotFoundComponent,
-   
+
     CreateComponent,
     EditComponent,
     ListComponent,
     ComicsComponent,
-    ComicDetailComponent
-   
+    ComicDetailComponent,
+    MyCollectionComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-  MatDialogModule,
-  BrowserAnimationsModule,
-  MatFormFieldModule,
-  FormsModule,
-  ReactiveFormsModule
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

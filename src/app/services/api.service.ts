@@ -30,6 +30,10 @@ createComic(data:any): Observable<any> {
     return this.http.get(`${this.baseUri}`);
   }
 
+  getOwnedComics()  {
+    const url= `${this.baseUri}/owned`;
+    return this.http.get(url)
+  }
   // Get comic by ID
   getComic(id:any): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;

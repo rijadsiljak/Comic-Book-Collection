@@ -1,20 +1,17 @@
-
 <div class="container-header">
-<app-header></app-header>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <ul class="navbar-nav mr-auto">
-<li >
-    <a class="nav-link" routerLinkActive="active" routerLink="/list">View Comics</a></li>
-  <li>  <a class="nav-link" routerLinkActive="active" routerLink="/create">Add Comics</a></li>
-
+  <app-header></app-header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="navbar-nav mr-auwto">
+      <li> <a class="nav-link" routerLinkActive="active" routerLink="/list">View Comics</a></li>
+      <li> <a class="nav-link" routerLinkActive="active" routerLink="/create">Add Comics</a></li>
+      <li> <a class="nav-link" routerLinkActive="active" routerLink="/my-collection">My Collection</a></li>
     </ul>
-
-
-</nav> 
+  </nav>
 </div>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
 <div>
-<app-footer></app-footer>
+  <app-footer></app-footer>
 </div>
