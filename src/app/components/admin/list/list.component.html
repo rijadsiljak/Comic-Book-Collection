@@ -30,7 +30,7 @@
             <span class="edit" [routerLink]="['/edit/', comic._id]">
               <button type="button" class="btn btn-primary btn-sm">Edit</button>
             </span>
-            <span class="delete" (click)="removeComic(comic, i)">
+            <span class="delete" (click)="removeComic(comic, i)" [routerLink]="['/list']">
               <button type="button" class="btn btn-danger btn-sm">Delete</button>
             </span>
           </td>

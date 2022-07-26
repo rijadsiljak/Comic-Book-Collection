@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
       edition: ['', [Validators.required, ]],
       ordinal: ['', [Validators.required, ]],
       cover: ['', [Validators.required]],
-      own: ['', [Validators.required, ]]
+      own: [ ]
     });
 
   }

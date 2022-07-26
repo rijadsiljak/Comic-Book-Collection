@@ -1,9 +1,9 @@
 <div class="row justify-content-center">
-    <div class="col-md-4 register-employee">
+    <div class="col-md-4 register-comic">
   
       <div class="card card-outline-secondary">
         <div class="card-header">
-          <h3 class="mb-0">Add Employee</h3>
+          <h3 class="mb-0">Add a Comic</h3>
         </div>
       <!-- form card register -->
       <div class="card-body">
@@ -20,7 +20,7 @@
 
           <div class="form-group">
             <label for="inputName">Edition</label>
-            <input class="form-control" type="text" formControlName="ordinal">
+            <input class="form-control" type="text" formControlName="edition">
             <!-- error -->
             <div class="invalid-feedback" *ngIf="submitted && myForm.edition.errors?.required">
               Edition is required.

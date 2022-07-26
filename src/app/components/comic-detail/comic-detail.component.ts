@@ -27,7 +27,10 @@ export class ComicDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
 
-  ) { this.readComic(); }
+  ) { 
+    
+    //this.readComic(); 
+  }
 
   Comic: any = [];
   ngOnInit() {
@@ -58,7 +61,9 @@ export class ComicDetailComponent implements OnInit {
 
 
   readComic() {
-    this.apiService.getComic('id').subscribe((comics) => {
+    
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.apiService.getComic(id).subscribe((comics) => {
       this.comics = comics;
     })
   }

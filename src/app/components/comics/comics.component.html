@@ -6,8 +6,8 @@
   
   
     <!-- Comics list -->
-    <table class="table table-bordered" *ngIf="Comic.length > 0">
-      <thead class="containter">
+    <table class="comic" *ngIf="Comic.length > 0">
+      <thead >
         <tr>
 
           <th scope="col right ">Name</th>
@@ -18,15 +18,15 @@
 
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr *ngFor="let comic of Comic; let i = index" >
    
           <td>{{comic.name}}</td>
           <td scope="col right ">{{comic.ordinal}}</td>
           <td>{{comic.edition}}</td>
           <td>
-            <a   [routerLink]="['/comic-detail/', comic._id]"> >
-            <img  class="comic" src ="{{comic.cover}}" style="width:200px;height:250px;" /> </a> </td>
+            
+            <img [routerLink]="['/comic-detail/', comic._id]" class="border" src ="{{comic.cover}}" style="width:200px;height:250px;" />  </td>
           
         </tr>
       </tbody>

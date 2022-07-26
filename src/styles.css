@@ -174,8 +174,16 @@ text-align: center;
   margin: 0x;
   padding: 0px 0px;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  max-height: 220px;
+
 }
 
+.border {
+
+  border-style:groove;
+}
 .comic.own {
   border: 5px inset  rgb(213, 183, 13);
 }
