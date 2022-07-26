@@ -1,0 +1,11 @@
+<div class="comics">
+    <tr *ngIf="comic$ | async as comic" >
+
+        <td class="comics">Naslov : {{comic.name}}</td>
+   
+        <td class="comics">Broj : {{comic.ordinal}}</td>
+        
+        <td class="comics"><img [ngClass]="{own: comic.own}" class="comic" src ="{{comic.cover}}" style="width:200px;height:250px;" />  </td>
+        <td class="comics">Edicija : {{comic.edition}}</td>
+   
+</div>

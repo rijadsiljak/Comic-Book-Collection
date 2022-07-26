@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateComponent } from './components/admin/create/create.component';
 import { EditComponent } from './components/admin/edit/edit.component';
 import { ListComponent } from './components/admin/list/list.component';
+import { ComicsComponent } from './components/comics/comics.component';
+import { ComicDetailComponent } from './components/comic-detail/comic-detail.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { ListComponent } from './components/admin/list/list.component';
    
     CreateComponent,
     EditComponent,
-    ListComponent
+    ListComponent,
+    ComicsComponent,
+    ComicDetailComponent
    
   ],
   imports: [
