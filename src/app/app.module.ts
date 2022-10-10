@@ -3,10 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -21,8 +19,6 @@ import { EditComponent } from './components/admin/edit/edit.component';
 import { ListComponent } from './components/admin/list/list.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { ComicDetailComponent } from './components/comic-detail/comic-detail.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserCreateComponent } from './components/admin/user-create/user-create.component';
@@ -32,50 +28,34 @@ import { UserListComponent } from './components/admin/user-list/user-list.compon
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 
-=======
->>>>>>> 18b710e (CRUD)
-=======
-import { MyCollectionComponent } from './components/my-collection/my-collection.component';
->>>>>>> af938f6 (My Collection)
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-<<<<<<< HEAD
     FooterComponent,
     PageNotFoundComponent,
-=======
-
-    FooterComponent,
-    PageNotFoundComponent,
-
->>>>>>> af938f6 (My Collection)
+    ComicDetailComponent,
     CreateComponent,
     EditComponent,
     ListComponent,
-    ComicsComponent,
-<<<<<<< HEAD
-<<<<<<< HEAD
-    ComicDetailComponent,
+    ComicsComponent, 
     MyCollectionComponent,
     LoginComponent,
     UserCreateComponent,
     AdminComponent,
     FileUploadComponent,
-    UserListComponent
-  
+    UserListComponent,
 
-=======
-    ComicDetailComponent
-   
->>>>>>> 18b710e (CRUD)
-=======
-    ComicDetailComponent,
-    MyCollectionComponent
 
->>>>>>> af938f6 (My Collection)
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -86,14 +66,10 @@ import { MyCollectionComponent } from './components/my-collection/my-collection.
     BrowserAnimationsModule,
     MatFormFieldModule,
     FormsModule,
-<<<<<<< HEAD
     ReactiveFormsModule,
     MatPaginatorModule,
  
     
-=======
-    ReactiveFormsModule
->>>>>>> af938f6 (My Collection)
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

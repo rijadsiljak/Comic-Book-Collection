@@ -7,8 +7,6 @@ import { CreateComponent } from './components/admin/create/create.component';
 import { EditComponent } from './components/admin/edit/edit.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { ComicDetailComponent } from './components/comic-detail/comic-detail.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserCreateComponent } from './components/admin/user-create/user-create.component';
@@ -16,33 +14,22 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 import { FileUploadComponent } from './components/admin/file-upload/file-upload.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 
-const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'main', component: ComicsComponent},
-  { path: 'my-collection' ,component: MyCollectionComponent },
-=======
 
-const routes: Routes = [
-  {path: '', component: ComicsComponent},
->>>>>>> 18b710e (CRUD)
-=======
-import { MyCollectionComponent } from './components/my-collection/my-collection.component';
 
 const routes: Routes = [
   {path: '', component: ComicsComponent},
   { path: 'my-collection' ,component: MyCollectionComponent },
->>>>>>> af938f6 (My Collection)
+
   { path: 'create' ,component: CreateComponent },
   { path: 'edit/:id', component: EditComponent },
   { path: 'comic-detail/:id', component: ComicDetailComponent },
   { path: 'list' ,component: ListComponent },
-<<<<<<< HEAD
+
   { path: 'admin' ,component: AdminComponent },
   { path: 'file-upload' ,component: FileUploadComponent },
   { path: 'add-user' ,component: UserCreateComponent },
   { path: 'user-list' ,component: UserListComponent },
-=======
->>>>>>> af938f6 (My Collection)
+
   { path: '**', component: PageNotFoundComponent },
 
 ];

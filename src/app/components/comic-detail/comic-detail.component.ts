@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ApiService } from 'src/app/services/api.service';
@@ -6,6 +7,7 @@ import { ActivatedRoute, Router,ParamMap } from '@angular/router';
 
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { any } from 'webidl-conversions';
 @Component({
   selector: 'app-comic-detail',
   templateUrl: './comic-detail.component.html',
@@ -27,20 +29,10 @@ export class ComicDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 749a40a (My Collection)
   ) { 
     
     //this.readComic(); 
   }
-<<<<<<< HEAD
-=======
-  ) { this.readComic(); }
->>>>>>> 18b710e (CRUD)
-=======
->>>>>>> 749a40a (My Collection)
 
   Comic: any = [];
   ngOnInit() {
@@ -60,11 +52,7 @@ export class ComicDetailComponent implements OnInit {
 
 
       name: ['', [Validators.required]],
-<<<<<<< HEAD
       redni: ['', [Validators.required]],
-=======
-      ordinal: ['', [Validators.required]],
->>>>>>> 18b710e (CRUD)
       edition: ['', [Validators.required]],
       cover: ['', [Validators.required]],
       own: []
@@ -73,23 +61,10 @@ export class ComicDetailComponent implements OnInit {
   }
 
 
-
-  readComic() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-    let id = this.actRoute.snapshot.paramMap.get('id');
-    this.apiService.getComic(id).subscribe((comics) => {
-=======
-    this.apiService.getComic('id').subscribe((comics) => {
->>>>>>> 18b710e (CRUD)
-=======
-    
-    let id = this.actRoute.snapshot.paramMap.get('id');
-    this.apiService.getComic(id).subscribe((comics) => {
->>>>>>> 749a40a (My Collection)
-      this.comics = comics;
-    })
+  readComic(){
+    this.apiService.getComics().subscribe((data) => {
+     this.Comic = data;
+    })    
   }
 
   // Getter to access form control
@@ -97,18 +72,11 @@ export class ComicDetailComponent implements OnInit {
     return this.detailsForm.controls;
   }
 
-
-
-
   getComic(id: any) {
     this.apiService.getComic(id).subscribe(data => {
       this.detailsForm.setValue({
         name: data['name'],
-<<<<<<< HEAD
         ordinal: data['redni'],
-=======
-        ordinal: data['ordinal'],
->>>>>>> 18b710e (CRUD)
         edition: data['edition'],
         cover: data['cover'],
         own: data['own'],

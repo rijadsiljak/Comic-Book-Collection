@@ -1,17 +1,11 @@
-<div class="comics">
+<div class="comicdetails">
     <tr *ngIf="comic$ | async as comic" >
 
         <td class="comics">Naslov : {{comic.name}}</td>
    
-<<<<<<< HEAD
         <td class="comics">Broj : {{comic.redni}}</td>
         
         <td class="comics"><img [ngClass]="{own: comic.own}" class="comic" src ="/assets/pictures/{{comic.redni}}.jpg"style="width:200px;height:250px;" />  </td>
-=======
-        <td class="comics">Broj : {{comic.ordinal}}</td>
-        
-        <td class="comics"><img [ngClass]="{own: comic.own}" class="comic" src ="{{comic.cover}}" style="width:200px;height:250px;" />  </td>
->>>>>>> 18b710e (CRUD)
         <td class="comics">Edicija : {{comic.edition}}</td>
    
 </div>
