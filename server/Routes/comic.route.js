@@ -58,13 +58,32 @@ comicRoute.route('/create').post((req, res, next) => {
 
 // Get All Comics
 comicRoute.route('/').get((req, res,next) => {
-    Comic.find((error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
+    pageSize  = parseInt(req.query.pageSize);
+    pageIndex  = parseInt(req.query.pageIndex);
+    if(pageSize==null || pageSize<0)
+    {
+      pageSize=9;
     }
-  }).sort({redni: 1})
+    if(pageIndex==null || pageIndex<0)
+    {
+      pageIndex=0;
+    }
+  Comic.find().limit(pageSize).skip(pageSize*pageIndex).sort({dateIssued: -1}).exec((error, data) => {
+      if (error) {
+        return next(error)
+      } else {
+        Comic.count().exec((error, data2) => {
+          if (error) {
+            return next(error)
+          } else {
+            responseData = {};
+            responseData.items=data;
+            responseData.lenght=data2;
+            res.json(responseData)
+          }});
+     
+      }
+    })
 })
 
 comicRoute.route('/owned').get((req, res,next) => {

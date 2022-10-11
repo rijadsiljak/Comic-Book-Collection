@@ -1,43 +1,22 @@
-<div >
+<div>
   <!-- No data message -->
   <div *ngIf="Comic.length <= 0">
     <p class="alet alert-warning text-center">There is no comic added yet!</p>
   </div>
 
 
-  <!-- Comics list 
-
-  <div class="comicList" *ngIf="Comic.length > 0">
-    <ul>
-      <li *ngFor="let comic of Comic; let i = index">
-        <div>
-          <a> <input value="{{comic.own}}"  class="star" type="checkbox" ></a>
-          <a>
-            <img [routerLink]="['/comic-detail/', comic._id]" class="border" src ="/assets/pictures/{{comic.redni}}.jpg"
-              style="width:200px;height:250px;" />
-          </a>
-       
-        </div>
-        <div> {{comic.edition}} </div>
-        <div> {{comic.name}}</div>
-        <div> #{{comic.redni}}</div>
-      </li>
-    </ul>
-  </div>
-</div>-->
-
-
   <div class="container">
-    <ng-container  *ngFor="let comic of data; let i = index">
+    <ng-container *ngFor="let comic of data; let i = index">
       <ul>
-        <li >
-          <div >
-            <a> <input value="{{comic.own}}"  class="star" type="checkbox" ></a>
+        <li>
+          <div>
+            <a> <input value="{{comic.own}}" class="star" type="checkbox"></a>
             <a>
-              <img [routerLink]="['/comic-detail/', comic._id]" class="border" src ="/assets/pictures/{{comic.redni}}.jpg"
+              <img [routerLink]="['/comic-detail/', comic._id]" class="border"
+                src="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
                 style="width:200px;height:250px;" />
             </a>
-         
+
           </div>
           <div> {{comic.edition}} </div>
           <div> {{comic.name}}</div>
@@ -48,9 +27,6 @@
 
   </div>
 
-  <mat-paginator  [length]="Comic.length"
-                [pageSize]="size"
-                [pageIndex]="page"
-                [pageSizeOptions]="[3,9, 18, 27]"
-                (page)="getData($event)">
+  <mat-paginator [length]="length" [pageSize]="size" [pageIndex]="page" [pageSizeOptions]="[3,9,27]"
+    (page)="getData($event)">
   </mat-paginator>

@@ -29,10 +29,12 @@ export class EditComponent implements OnInit {
     this.editForm = this.fb.group({
   
       name: ['', [Validators.required]],
-      redni: ['', [Validators.required]],
-      edition: ['', [Validators.required]],
-      own:[],
-      wish:[]
+      edition: ['', [Validators.required, ]],
+      redni: ['', [Validators.required, ]],  
+      own: [ ],
+      wish: [ ],
+      comic: ['', [Validators.required]],
+      publisher: ['', [Validators.required]]
     })
   }
 
@@ -50,6 +52,8 @@ export class EditComponent implements OnInit {
         ordinal: data['redni'],
         edition: data['edition'],
         cover: data['cover'],
+        comic: data ['comic'],
+        publisher: data['publisher'],
         own: data['own'],
         wish: data['wish']
       });
@@ -59,11 +63,12 @@ export class EditComponent implements OnInit {
   updateComic() {
     this.editForm = this.fb.group({    
       name: ['', [Validators.required]],
-      redni: ['', [Validators.required]],
-      edition: ['', [Validators.required]],
-      cover: ['', [Validators.required]],
-      own:[],
-      wish:[]
+      edition: ['', [Validators.required, ]],
+      redni: ['', [Validators.required, ]],  
+      own: [ ],
+      wish: [ ],
+      comic: ['', [Validators.required]],
+      publisher: ['', [Validators.required]]
     })
   }
   onSubmit() {

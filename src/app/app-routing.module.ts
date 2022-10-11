@@ -17,14 +17,13 @@ import { UserListComponent } from './components/admin/user-list/user-list.compon
 
 
 const routes: Routes = [
-  {path: '', component: ComicsComponent},
+  {path: '', component: LoginComponent},
   { path: 'my-collection' ,component: MyCollectionComponent },
-
   { path: 'create' ,component: CreateComponent },
   { path: 'edit/:id', component: EditComponent },
   { path: 'comic-detail/:id', component: ComicDetailComponent },
   { path: 'list' ,component: ListComponent },
-
+  { path: 'main' ,component: ComicsComponent },
   { path: 'admin' ,component: AdminComponent },
   { path: 'file-upload' ,component: FileUploadComponent },
   { path: 'add-user' ,component: UserCreateComponent },

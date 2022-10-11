@@ -33,8 +33,20 @@
               Edition is required.
             </div>
           </div>
-
-    
+          <div class="form-group">
+            <label for="inputName">Publisher</label>
+            <input class="form-control" type="text" formControlName="publisher">
+            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+              Edition is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputName">Comic</label>
+            <input class="form-control" type="text" formControlName="comic">
+            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+              Edition is required.
+            </div>
+          </div>
 
           <div class="form-group">
             <label for="inputName">Own</label>

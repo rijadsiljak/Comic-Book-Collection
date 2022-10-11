@@ -30,7 +30,10 @@ export class CreateComponent implements OnInit {
       edition: ['', [Validators.required, ]],
       redni: ['', [Validators.required, ]],  
       own: [ ],
-      wish: [ ]
+      wish: [ ],
+      comic: ['', [Validators.required]],
+      publisher: ['', [Validators.required]],
+      dateIssued: []
  
 
     });

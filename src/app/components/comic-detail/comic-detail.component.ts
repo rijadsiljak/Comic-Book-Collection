@@ -62,7 +62,7 @@ export class ComicDetailComponent implements OnInit {
 
 
   readComic(){
-    this.apiService.getComics().subscribe((data) => {
+    this.apiService.getComics(0,9).subscribe((data) => {
      this.Comic = data;
     })    
   }

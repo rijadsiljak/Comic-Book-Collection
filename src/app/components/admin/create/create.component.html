@@ -27,6 +27,24 @@
             </div>
             
           </div>
+          <div class="form-group">
+            <label for="inputName">Comic</label>
+            <input class="form-control" type="text" formControlName="comic">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.edition.errors?.required">
+              Edition is required.
+            </div>
+            
+          </div>
+          <div class="form-group">
+            <label for="inputName">Publisher</label>
+            <input class="form-control" type="text" formControlName="publisher">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.edition.errors?.required">
+              Edition is required.
+            </div>
+            
+          </div>
   
           <div class="form-group">
             <label for="inputEmail3">Ordinal</label>
@@ -38,6 +56,16 @@
            
           </div>
           
+
+          <div class="form-group">
+            <label for="inputEmail3">Ordinal</label>
+            <input class="form-control" type="date" formControlName="dateIssued">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.ordinal.errors?.required">
+              Enter comic issued date.
+            </div>
+           
+          </div>
             
           <div class="form-group">
             <label for="inputVerify3">Own</label>
@@ -45,6 +73,7 @@
            
            
           </div>
+
           <div class="form-group">
             <label for="inputVerify3">Wishlist</label>
             <input class="star" type="checkbox" formControlName="wish">

@@ -1,3 +1,4 @@
+const { Date } = require('core-js');
 const mongoose = require('mongoose');
 const { number } = require('yargs');
 const Schema = mongoose.Schema;
@@ -12,12 +13,26 @@ let Comic = new Schema({
    edition: {
       type: String
    },
+   publisher: {
+      type: String
+   },
+   comic: {
+      type: String
+   },
    own: {
       type: Boolean
    },
    wish:
    {
       type: Boolean
+   },
+   dateAdded:
+   {
+      type: Date
+   },
+   dateIssued:
+   {
+      type: Date
    },
    redni:
    {

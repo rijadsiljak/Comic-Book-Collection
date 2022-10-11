@@ -38,8 +38,8 @@ createComic(data:any): Observable<any> {
  }
 
   // Get all comics lists
-  getComics() {
-    return this.http.get(`${this.baseUri}`);
+  getComics(pageIndex,pageSize) {
+    return this.http.get(`${this.baseUri}`,{params:{pageIndex: pageIndex,pageSize: pageSize}});
   }
 
     // Get all users lists
