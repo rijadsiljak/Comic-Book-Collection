@@ -5,5 +5,8 @@ export class Comic {
     edition!: string;
     cover!: string;
     own!: boolean;
+    publisher : string;
+    comic: string;
+    
 
 }

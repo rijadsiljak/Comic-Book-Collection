@@ -1,15 +1,20 @@
-<nav *ngIf="router.url !=='/'">
-  <div class="container-header">
-  <app-header></app-header>
- 
-</div>
-</nav>
-
-<div>
-  <router-outlet></router-outlet>
-</div>
-
-
 <div >
-  <app-footer *ngIf="router.url !=='/'"></app-footer>
+  <div >
+    <div id="navbar-main">
+      <ul >
+        <li><a routerLink="/comics">Home</a></li>
+        <li><a routerLink="/my-collection">My Comics</a></li>
+        <li><a routerLink="/admin">Admin</a></li>
+      </ul>
+
+
+      <ul>
+        <li *ngIf="!auth.isLoggedIn()"><a routerLink="/login">Sign in</a></li>
+        <li *ngIf="auth.isLoggedIn()"><a routerLink="/profile">{{ auth.getUserDetails()?.name }}</a></li>
+        <li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<router-outlet></router-outlet>

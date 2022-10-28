@@ -31,10 +31,12 @@
             <span class="edit" [routerLink]="['/edit/', user._id]">
               <button type="button" class="btn btn-primary btn-sm">Edit</button>
             </span>
+            -->
+            <td class="text-center edit-block">
             <span class="delete" (click)="removeUser(user, i)" [routerLink]="['/user-list']">
               <button type="button" class="btn btn-danger btn-sm">Delete</button>
             </span>
-          </td>-->
+          </td>
         </tr>
       </tbody>
     </table>

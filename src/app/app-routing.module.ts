@@ -8,17 +8,20 @@ import { EditComponent } from './components/admin/edit/edit.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { ComicDetailComponent } from './components/comic-detail/comic-detail.component';
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/authentication/login/login.component';
 import { UserCreateComponent } from './components/admin/user-create/user-create.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { FileUploadComponent } from './components/admin/file-upload/file-upload.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
-
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { ProfileComponent } from './components/authentication/profile/profile.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: ComicsComponent},
   { path: 'my-collection' ,component: MyCollectionComponent },
+  { path: 'comics' ,component: ComicsComponent },
   { path: 'create' ,component: CreateComponent },
   { path: 'edit/:id', component: EditComponent },
   { path: 'comic-detail/:id', component: ComicDetailComponent },
@@ -28,7 +31,9 @@ const routes: Routes = [
   { path: 'file-upload' ,component: FileUploadComponent },
   { path: 'add-user' ,component: UserCreateComponent },
   { path: 'user-list' ,component: UserListComponent },
-
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: '**', component: PageNotFoundComponent },
 
 ];

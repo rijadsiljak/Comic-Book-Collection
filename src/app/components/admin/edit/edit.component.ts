@@ -30,11 +30,10 @@ export class EditComponent implements OnInit {
   
       name: ['', [Validators.required]],
       edition: ['', [Validators.required, ]],
-      redni: ['', [Validators.required, ]],  
-      own: [ ],
-      wish: [ ],
+      redni: ['', [Validators.required, ]],       
       comic: ['', [Validators.required]],
-      publisher: ['', [Validators.required]]
+      publisher: ['', [Validators.required]],
+      own: ['', [Validators.required]]
     })
   }
 
@@ -49,13 +48,12 @@ export class EditComponent implements OnInit {
     this.apiService.getComic(id).subscribe(data => {
       this.editForm.setValue({   
         name: data['name'],
-        ordinal: data['redni'],
+        redni: data['redni'],
         edition: data['edition'],
-        cover: data['cover'],
-        comic: data ['comic'],
+        comic: data ['comic'],   
         publisher: data['publisher'],
         own: data['own'],
-        wish: data['wish']
+
       });
     });
   }
@@ -64,11 +62,10 @@ export class EditComponent implements OnInit {
     this.editForm = this.fb.group({    
       name: ['', [Validators.required]],
       edition: ['', [Validators.required, ]],
-      redni: ['', [Validators.required, ]],  
-      own: [ ],
-      wish: [ ],
+      redni: ['', [Validators.required, ]], 
       comic: ['', [Validators.required]],
-      publisher: ['', [Validators.required]]
+      publisher: ['', [Validators.required]],
+      own: ['', [Validators.required]]
     })
   }
   onSubmit() {

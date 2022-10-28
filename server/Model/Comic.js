@@ -1,3 +1,4 @@
+
 const { Date } = require('core-js');
 const mongoose = require('mongoose');
 const { number } = require('yargs');
@@ -38,7 +39,8 @@ let Comic = new Schema({
    {
       type: Number
    }
-}, {
+}, 
+{
    collection: 'comics'
 })
 module.exports = mongoose.model('Comic', Comic)

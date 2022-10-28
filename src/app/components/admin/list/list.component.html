@@ -15,6 +15,7 @@
           <th scope="col">Edition</th>
           <th scope="col center">Cover</th> 
           <th scope="col">Comic</th>
+   
           <th scope="col center">Publisher</th>          
           <th scope="col center">Update/Delete</th>
         </tr>
@@ -27,15 +28,17 @@
           <td>{{comic.edition}}</td>          
   
   
-     <td class="containter"><img [ngClass]="{own: comic.own}" class="comic" src ="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
+     <td class="containter"><img [ngClass]="{own: comic.own}" class="comic" 
+      src ="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
        style="width:200px;height:250px;"/>  </td>
        <td>{{comic.comic}}</td>
+
        <td>{{comic.publisher}}</td>
           <td class="text-center edit-block">
             <span class="edit" [routerLink]="['/edit/', comic._id]">
               <button type="button" class="btn btn-primary btn-sm">Edit</button>
             </span>
-            <span class="delete" (click)="removeComic(comic, i)" [routerLink]="['/list']">
+            <span class="delete" (click)="removeComic(comic, comic._id)" [routerLink]="['/list']">
               <button type="button" class="btn btn-danger btn-sm">Delete</button>
             </span> </td>
           

@@ -10,7 +10,8 @@
       <li  *ngFor="let comic of Comic; let i = index">
         <div>
           <a>
-            <img [routerLink]="['/comic-detail/', comic._id]" class="border" src ="/assets/pictures/{{comic.redni}}.jpg"
+            <img [routerLink]="['/comic-detail/', comic._id]" class="border" 
+            src ="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
               style="width:200px;height:250px;" />
               
           </a>
@@ -19,7 +20,7 @@
 
         <div> {{comic.edition}}   </div>
         <div> {{comic.name}}</div>
-        <div> #{{comic.ordinal}}</div>
+        <div> #{{comic.redni}}</div>
       </li>
     </ul>
   </div>

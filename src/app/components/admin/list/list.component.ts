@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {}
 
   readComic(){
-    this.apiService.getComics(0,9).subscribe((data) => {
+    this.apiService.listComics().subscribe((data) => {
      this.Comic = data;
     })    
   }

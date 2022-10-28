@@ -20,12 +20,14 @@ import { ListComponent } from './components/admin/list/list.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { ComicDetailComponent } from './components/comic-detail/comic-detail.component';
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/authentication/login/login.component';
 import { UserCreateComponent } from './components/admin/user-create/user-create.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { FileUploadComponent } from './components/admin/file-upload/file-upload.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { ProfileComponent } from './components/authentication/profile/profile.component';
 
 
 
@@ -50,6 +52,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     AdminComponent,
     FileUploadComponent,
     UserListComponent,
+    RegisterComponent,
+    ProfileComponent,
 
 
 

@@ -4,10 +4,10 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ApiService } from 'src/app/services/api.service';
 import { Comic } from 'src/app/model/comic';
 import { ActivatedRoute, Router,ParamMap } from '@angular/router';
-
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { any } from 'webidl-conversions';
+
 @Component({
   selector: 'app-comic-detail',
   templateUrl: './comic-detail.component.html',
@@ -35,7 +35,9 @@ export class ComicDetailComponent implements OnInit {
   }
 
   Comic: any = [];
-  ngOnInit() {
+  ngOnInit(
+    
+  ) {
 
 
     this.comic$ = this.route.paramMap.pipe(
@@ -53,6 +55,8 @@ export class ComicDetailComponent implements OnInit {
 
       name: ['', [Validators.required]],
       redni: ['', [Validators.required]],
+      comic:['', [Validators.required]],
+      publisher: ['', [Validators.required]],
       edition: ['', [Validators.required]],
       cover: ['', [Validators.required]],
       own: []
@@ -62,7 +66,7 @@ export class ComicDetailComponent implements OnInit {
 
 
   readComic(){
-    this.apiService.getComics(0,9).subscribe((data) => {
+    this.apiService.listComics().subscribe((data) => {
      this.Comic = data;
     })    
   }
@@ -75,13 +79,36 @@ export class ComicDetailComponent implements OnInit {
   getComic(id: any) {
     this.apiService.getComic(id).subscribe(data => {
       this.detailsForm.setValue({
+
         name: data['name'],
-        ordinal: data['redni'],
+        redni: data['redni'],
         edition: data['edition'],
+        comic: data['comic'],
+        publisher: data['publisher'],
         cover: data['cover'],
         own: data['own'],
+
       });
     });
+  }
+
+
+ 
+  onSubmit() {
+    this.submitted = true;
+    {
+      if (window.confirm('Are you sure?')) {
+        let id = this.actRoute.snapshot.paramMap.get('id');
+        this.apiService.updateComicOwn(id)
+          .subscribe(res => {
+            this.router.navigateByUrl('/list');
+            console.log('Content updated successfully!')
+          }, (error) => {
+            console.log(error)
+          })
+      }
+   
+    }
   }
 
 
