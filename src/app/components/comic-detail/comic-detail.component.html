@@ -1,19 +1,18 @@
 <div align="center">
-    <tr *ngIf="comic$ | async as comic"  >
+    <tr *ngIf="comic$ | async as comic">
 
         <td class="comics">Naslov : {{comic.name}}</td>
-   
+
         <td class="comics">Broj : {{comic.redni}}</td>
-        
-        <td class="comics"><img [ngClass]="{own: comic.own}"  
-            src ="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
-            style="width:400px;height:450px;" />  </td>
+
+        <td class="comics"><img [ngClass]="{own: comic.own}"
+                src="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
+                style="width:400px;height:450px;" /> </td>
 
         <td class="comics">Edicija : {{comic.edition}}</td>
-   
 
 
 </div>
 <form (submit)="onSubmit()">
-<button type="submit" > Add to collection</button>
+    <button type="submit"> Add to collection</button>
 </form>

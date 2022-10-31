@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ApiService } from 'src/app/services/api.service';
 import { Comic } from 'src/app/model/comic';
-import {ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -20,17 +20,17 @@ export class EditComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private apiService: ApiService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.updateComic();
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.getComic(id);
     this.editForm = this.fb.group({
-  
+
       name: ['', [Validators.required]],
-      edition: ['', [Validators.required, ]],
-      redni: ['', [Validators.required, ]],       
+      edition: ['', [Validators.required,]],
+      redni: ['', [Validators.required,]],
       comic: ['', [Validators.required]],
       publisher: ['', [Validators.required]],
       own: ['', [Validators.required]]
@@ -44,13 +44,13 @@ export class EditComponent implements OnInit {
     return this.editForm.controls;
   }
 
-  getComic(id:any) {
+  getComic(id: any) {
     this.apiService.getComic(id).subscribe(data => {
-      this.editForm.setValue({   
+      this.editForm.setValue({
         name: data['name'],
         redni: data['redni'],
         edition: data['edition'],
-        comic: data ['comic'],   
+        comic: data['comic'],
         publisher: data['publisher'],
         own: data['own'],
 
@@ -59,10 +59,10 @@ export class EditComponent implements OnInit {
   }
 
   updateComic() {
-    this.editForm = this.fb.group({    
+    this.editForm = this.fb.group({
       name: ['', [Validators.required]],
-      edition: ['', [Validators.required, ]],
-      redni: ['', [Validators.required, ]], 
+      edition: ['', [Validators.required,]],
+      redni: ['', [Validators.required,]],
       comic: ['', [Validators.required]],
       publisher: ['', [Validators.required]],
       own: ['', [Validators.required]]
@@ -83,7 +83,7 @@ export class EditComponent implements OnInit {
             console.log(error)
           })
       }
-   
+
     }
   }
 
