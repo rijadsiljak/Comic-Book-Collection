@@ -153,7 +153,14 @@ export class ApiService {
 
   updateComicOwn(id: any ): Observable<any> {
     let url = `${this.baseUri}/wish/${id}`;
-    return this.http.put(url,  { headers: this.headers }).pipe(
+    return this.http.put(url, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt))
+
+  }
+
+addComicOwntoUser(id: any, data: any ): Observable<any> {
+    let url = `${this.baseUri}/own/${id}`;
+    return this.http.put(url, {data:data}, { headers: this.headers }).pipe(
       catchError(this.errorMgmt))
 
   }

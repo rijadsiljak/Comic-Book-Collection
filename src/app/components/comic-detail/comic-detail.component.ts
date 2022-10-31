@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ApiService } from 'src/app/services/api.service';
 import { Comic } from 'src/app/model/comic';
-import { ActivatedRoute, Router,ParamMap } from '@angular/router';
+
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { any } from 'webidl-conversions';
+import { AuthenticationService, UserDetails } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-comic-detail',
@@ -14,11 +16,13 @@ import { any } from 'webidl-conversions';
   styleUrls: ['./comic-detail.component.css']
 })
 export class ComicDetailComponent implements OnInit {
+  details: UserDetails;
   submitted = false;
   detailsForm!: FormGroup;
-  ComicData: Comic[] | undefined;
+ // ComicData: Comic[] | undefined;
   comic$!: Observable<Comic>;
-  comics: Comic[] = [];
+
+//  comics: Comic[] = [];
 
   name!: string;
 
@@ -27,16 +31,17 @@ export class ComicDetailComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private apiService: ApiService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private auth: AuthenticationService
 
-  ) { 
-    
+  ) {
+
     //this.readComic(); 
   }
 
   Comic: any = [];
   ngOnInit(
-    
+
   ) {
 
 
@@ -44,9 +49,17 @@ export class ComicDetailComponent implements OnInit {
       switchMap((params: ParamMap) =>
         this.apiService.getComic(params.get('id')!))
     );
-  
+
+    this.auth.profile().subscribe(user => {
+      this.details = user;
+    }, (err) => {
+      console.error(err);
+    });
+    
 
     let id = this.actRoute.snapshot.paramMap.get('id');
+  
+
     this.getComic(id);
 
 
@@ -55,7 +68,7 @@ export class ComicDetailComponent implements OnInit {
 
       name: ['', [Validators.required]],
       redni: ['', [Validators.required]],
-      comic:['', [Validators.required]],
+      comic: ['', [Validators.required]],
       publisher: ['', [Validators.required]],
       edition: ['', [Validators.required]],
       cover: ['', [Validators.required]],
@@ -65,10 +78,10 @@ export class ComicDetailComponent implements OnInit {
   }
 
 
-  readComic(){
+  readComic() {
     this.apiService.listComics().subscribe((data) => {
-     this.Comic = data;
-    })    
+      this.Comic = data;
+    })
   }
 
   // Getter to access form control
@@ -93,7 +106,7 @@ export class ComicDetailComponent implements OnInit {
   }
 
 
- 
+
   onSubmit() {
     this.submitted = true;
     {
@@ -101,6 +114,27 @@ export class ComicDetailComponent implements OnInit {
         let id = this.actRoute.snapshot.paramMap.get('id');
         this.apiService.updateComicOwn(id)
           .subscribe(res => {
+            this.router.navigateByUrl('/list');
+            console.log('Content updated successfully!')
+          }, (error) => {
+            console.log(error)
+          })
+      }
+
+    }
+  }
+
+
+  addComic() {
+    this.submitted = true;
+    {
+      if (window.confirm('Are you sure?')) {
+        
+        let id = this.actRoute.snapshot.paramMap.get('id');
+        let ids = this.details._id
+        this.apiService.addComicOwntoUser(ids,id)
+          .subscribe(res => 
+            {
             this.router.navigateByUrl('/list');
             console.log('Content updated successfully!')
           }, (error) => {
