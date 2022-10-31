@@ -21,49 +21,11 @@ let User = require('../Model/User');
 // profile
 comicRoute.get('/profile', auth, ctrlProfile.profileRead);
 
-/*
-comicRoute.route('/profile').get((req, res,next) => {
-  User.find((error, data) => {
-  if (error) {
-    return next(error)
-  } else {
-    res.json(data)
-  }
-})
-})*/
 
 // authentication
 comicRoute.post('/register', ctrlAuth.register);
 
 comicRoute.post('/login', ctrlAuth.login);
-
-
-/*
-
-comicRoute.route('/login').get((req, res,next) => {
-  passport.authenticate('local', function(err, user, info){
-    var token;
-
-    // If Passport throws/catches an error
-    if (err) {
-      res.status(404).json(err);
-      return;
-    }
-
-    // If a user is found
-    if(user){
-      token = user.generateJwt();
-      res.status(200);
-      res.json({
-        "token" : token
-      });
-    } else {
-      // If user is not found
-      res.status(401).json(info);
-    }
-  })(req, res);
-})
-*/
 
 
 // Get All Users
@@ -153,8 +115,8 @@ comicRoute.route('/').get((req, res, next) => {
         }
       });
 
-    } 
-    })
+    }
+  })
 })
 
 
@@ -196,10 +158,10 @@ comicRoute.route('/update/:id').put((req, res, next) => {
   })
 })
 
-// Update comic
+// Update comic own status
 comicRoute.route('/wish/:id').put((req, res, next) => {
   Comic.findByIdAndUpdate(req.params.id, {
-   own : true
+    own: true
   }, (error, data) => {
     if (error) {
       return next(error);
@@ -210,6 +172,24 @@ comicRoute.route('/wish/:id').put((req, res, next) => {
     }
   })
 })
+
+// Update comic own status
+comicRoute.route('/own/:id').put((req, res, next) => {
+  User.findByIdAndUpdate(req.params.id, {
+
+    $push: {"comics_own":
+    {comic_id: req.body.data}} 
+  }, (error, data) => {
+    if (error) {
+      return next(error);
+      console.log(error)
+    } else {
+      res.json(data)
+      console.log('Data updated successfully')
+    }
+  })
+})
+
 // Delete comic
 comicRoute.route('/delete/:id').delete((req, res, next) => {
   Comic.findByIdAndDelete(req.params.id, (error, data) => {

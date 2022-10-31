@@ -28,7 +28,9 @@ mongoose.connect(dbConfig.db, {
 // Setting up port with express js
 const comicRoute = require('../server/Routes/comic.route.js')
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json(
+ 
+));
 app.use(bodyParser.urlencoded({
    extended: false
 }));

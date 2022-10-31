@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ApiService } from 'src/app/services/api.service';
-import { Comic } from 'src/app/model/comic';
-import { ActivatedRoute, Router } from '@angular/router';
+//import { Comic } from 'src/app/model/comic';
+import {ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditComponent implements OnInit {
   submitted = false;
   editForm!: FormGroup;
-  ComicData: Comic[] | undefined;
+ // ComicData: Comic[] | undefined;
 
 
   constructor(
@@ -68,6 +68,7 @@ export class EditComponent implements OnInit {
       own: ['', [Validators.required]]
     })
   }
+  
   onSubmit() {
     this.submitted = true;
     if (!this.editForm.valid) {

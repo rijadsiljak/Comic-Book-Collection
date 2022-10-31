@@ -8,5 +8,4 @@ export class Comic {
     publisher : string;
     comic: string;
     
-
 }

@@ -18,10 +18,11 @@ let userSchema =  new Schema({
     type: String,
     required: true
   },
-comis_owned:  {
-type : Array,
-required: false
-  },
+comics_own:  [
+{
+  comic_id: { type: String}
+}
+],
   hash: String,
   salt: String
 },{
