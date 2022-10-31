@@ -134,12 +134,10 @@ export class ApiService {
     const url = `${this.baseUri}/user-list`;
     return this.http.get(url)
   }
-
   getOwnedComics() {
     const url = `${this.baseUri}/owned`;
     return this.http.get(url)
   }
-
   // Get comic by ID
   getComic(id: any): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
@@ -164,7 +162,6 @@ addComicOwntoUser(id: any, data: any ): Observable<any> {
       catchError(this.errorMgmt))
 
   }
-
 
   // Update comic
   updateComic(id: any, data: any): Observable<any> {

@@ -135,7 +135,7 @@ export class ComicDetailComponent implements OnInit {
         this.apiService.addComicOwntoUser(ids,id)
           .subscribe(res => 
             {
-            this.router.navigateByUrl('/list');
+            this.router.navigateByUrl('/my-collection');
             console.log('Content updated successfully!')
           }, (error) => {
             console.log(error)
