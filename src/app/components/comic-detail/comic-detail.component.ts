@@ -32,10 +32,12 @@ export class ComicDetailComponent implements OnInit {
     private apiService: ApiService,
     private router: Router,
     private route: ActivatedRoute,
-    private auth: AuthenticationService
-
+    private auth: AuthenticationService,
+    
   ) {
 
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.getComic(id);
     //this.readComic(); 
   }
 
@@ -57,10 +59,7 @@ export class ComicDetailComponent implements OnInit {
     });
     
 
-    let id = this.actRoute.snapshot.paramMap.get('id');
-  
 
-    this.getComic(id);
 
 
     this.detailsForm = this.fb.group({

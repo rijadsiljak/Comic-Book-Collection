@@ -51,17 +51,59 @@ comicRoute.route('/list').get((req, res, next) => {
   })
 })
 
+
 /*
-// Add user
-comicRoute.route('/register').post((req, res, next) => {
-  User.create(req.body, (error, data) => {
+
+    {$lookup:
+        {
+            from: "Comic",
+            localField: "_id",
+            foreignField: "comics_own",
+            as: "books"
+        }}
+        */
+        comicRoute.route('/collect').get(async (req, res, next) => {
+          try {
+            let comics = await User.aggregate([
+             
+              
+              {
+                $lookup: {
+                  from: "comics",
+                  localField: "id",
+                  foreignField: "comics_own.comic_id",
+                  as: "comics_owned"
+               },
+             },
+           ]);
+       
+           res.status(200).json(comics);
+         } catch (err) {
+           res.status(404).json({ success: false, msg: "Comics are not found" });
+         }
+       });
+
+
+
+
+comicRoute.route('/collection/:id').get(async (req, res, next) => {
+  User.findById(req.params.id, (error, data) => {
     if (error) {
-      return next(error)
+      return next(error);
     } else {
-      res.json(data)
+      var ids = [];
+      data.comics_own.forEach(element => {
+        ids.push(element.comic_id);
+      });
+      Comic.find().where('_id').in(ids).exec((err, records) => {
+        res.json( records
+        )
+      });
+ 
     }
   })
-});*/
+});
+
 // Delete comic
 comicRoute.route('/delete-user/:id').delete((req, res, next) => {
   User.findOneAndRemove(req.params.id, (error, data) => {

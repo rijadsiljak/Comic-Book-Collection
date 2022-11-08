@@ -134,6 +134,17 @@ export class ApiService {
     const url = `${this.baseUri}/user-list`;
     return this.http.get(url)
   }
+
+  getMyCollection(id: any): Observable<any> {
+    let url = `${this.baseUri}/collection/${id}`;
+    return this.http.get(url,  { headers: this.headers }).pipe(
+      map((res: any) => {
+        return res || {}
+      }),
+      catchError(this.errorMgmt)
+    )
+  }
+
   getOwnedComics() {
     const url = `${this.baseUri}/owned`;
     return this.http.get(url)
@@ -160,7 +171,7 @@ addComicOwntoUser(id: any, data: any ): Observable<any> {
     let url = `${this.baseUri}/own/${id}`;
     return this.http.put(url, {data:data}, { headers: this.headers }).pipe(
       catchError(this.errorMgmt))
-
+      
   }
 
   // Update comic

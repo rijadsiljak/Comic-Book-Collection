@@ -7,6 +7,7 @@ import { AuthenticationService, UserDetails } from 'src/app/services/authenticat
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+  
   details: UserDetails;
 
   constructor(private auth: AuthenticationService) {}

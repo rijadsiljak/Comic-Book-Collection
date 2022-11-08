@@ -6,6 +6,7 @@ var jwt = require('jsonwebtoken');
 const { Date } = require('core-js');
 
 const { number } = require('yargs');
+
 const Schema = mongoose.Schema;
 
 let userSchema =  new Schema({
@@ -20,14 +21,20 @@ let userSchema =  new Schema({
   },
 comics_own:  [
 {
-  comic_id: { type: String}
+  comic_id: { 
+    type: mongoose.Schema.ObjectId,
+    ref: 'comics'
+  }
 }
 ],
   hash: String,
   salt: String
-},{
+},
+{
   collection: 'users'
 })
+
+
 
 userSchema.methods.setPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
