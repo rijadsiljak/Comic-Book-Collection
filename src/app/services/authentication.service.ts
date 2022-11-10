@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable,map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
-
-
 
 export interface UserDetails {
   _id: string;
@@ -11,7 +9,7 @@ export interface UserDetails {
   name: string;
   exp: number;
   iat: number;
-
+  group: string;
 }
 
 interface TokenResponse {
@@ -22,14 +20,15 @@ export interface TokenPayload {
   email: string;
   password: string;
   name?: string;
+  group?: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
   private token: string;
-  baseUri:string = 'http://localhost:4000/api';
+  baseUri: string = 'http://localhost:4000/api';
   constructor(private http: HttpClient, private router: Router) {}
 
   private saveToken(token: string): void {
@@ -65,18 +64,22 @@ export class AuthenticationService {
     }
   }
 
-  private request(method: 'post'|'get', type: 'login'|'register'|'profile', user?: TokenPayload): Observable<any> {
+  private request(
+    method: 'post' | 'get',
+    type: 'login' | 'register' | 'profile',
+    user?: TokenPayload
+  ): Observable<any> {
     let base;
 
     if (method === 'post') {
       base = this.http.post(`${this.baseUri}/${type}`, user);
     } else {
-      base = this.http.get(`${this.baseUri}/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      base = this.http.get(`${this.baseUri}/${type}`, {
+        headers: { Authorization: `Bearer ${this.getToken()}` },
+      });
     }
 
-    const request = 
-    
-    base.pipe(
+    const request = base.pipe(
       map((data: TokenResponse) => {
         if (data.token) {
           this.saveToken(data.token);

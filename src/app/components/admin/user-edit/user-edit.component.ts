@@ -5,11 +5,11 @@ import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css'],
+  selector: 'app-user-edit',
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['./user-edit.component.css'],
 })
-export class EditComponent implements OnInit {
+export class UserEditComponent implements OnInit {
   submitted = false;
   editForm!: FormGroup;
   // ComicData: Comic[] | undefined;
@@ -22,15 +22,13 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.updateComic();
+    this.updateUser();
     let id = this.actRoute.snapshot.paramMap.get('id');
-    this.getComic(id);
+    this.getUser(id);
     this.editForm = this.fb.group({
       name: ['', [Validators.required]],
-      edition: ['', [Validators.required]],
-      redni: ['', [Validators.required]],
-      comic: ['', [Validators.required]],
-      publisher: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      group: ['', [Validators.required]],
     });
   }
 
@@ -39,25 +37,21 @@ export class EditComponent implements OnInit {
     return this.editForm.controls;
   }
 
-  getComic(id: any) {
-    this.apiService.getComic(id).subscribe((data) => {
+  getUser(id: any) {
+    this.apiService.getUser(id).subscribe((data) => {
       this.editForm.setValue({
         name: data['name'],
-        redni: data['redni'],
-        edition: data['edition'],
-        comic: data['comic'],
-        publisher: data['publisher'],
+        email: data['email'],
+        group: data['group'],
       });
     });
   }
 
-  updateComic() {
+  updateUser() {
     this.editForm = this.fb.group({
       name: ['', [Validators.required]],
-      edition: ['', [Validators.required]],
-      redni: ['', [Validators.required]],
-      comic: ['', [Validators.required]],
-      publisher: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      group: ['', [Validators.required]],
     });
   }
 
@@ -68,7 +62,7 @@ export class EditComponent implements OnInit {
     } else {
       if (window.confirm('Are you sure?')) {
         let id = this.actRoute.snapshot.paramMap.get('id');
-        this.apiService.updateComic(id, this.editForm.value).subscribe(
+        this.apiService.updateUser(id, this.editForm.value).subscribe(
           (res) => {
             this.router.navigateByUrl('/list');
             console.log('Content updated successfully!');

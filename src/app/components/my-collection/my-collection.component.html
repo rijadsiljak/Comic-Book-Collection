@@ -1,26 +1,35 @@
-<div class="containter">
-    <!-- No data message -->
-    <div *ngIf="Comic.length <= 0">
-      <p class="alet alert-warning text-center">There is no comic added yet!</p>
-    </div>
-  
+<mat-progress-spinner
+  mode="indeterminate"
+  *ngIf="isLoading"
+></mat-progress-spinner>
+<div *ngIf="!isLoading" class="containter">
+  <!-- No data message -->
+  <div *ngIf="Comic.length <= 0">
+    <p class="alet alert-warning text-center">
+      You have no comics in your collection :(
+    </p>
+  </div>
+
   <!-- Comics list -->
-  <div  *ngIf="Comic.length > 0">
+  <div *ngIf="Comic.length > 0">
     <ul class="serv">
-      <li  *ngFor="let comic of Comic; let i = index">
+      <li *ngFor="let comic of Comic; let i = index">
         <div>
           <a>
-            <img [routerLink]="['/comic-detail/', comic._id]" class="border" 
-            src ="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
-              style="width:200px;height:250px;" />
-              
+            <img
+              [routerLink]="['/comic-detail/', comic._id]"
+              class="border"
+              src="/assets/pictures/STRIPOVI/{{ comic.comic }}/{{
+                comic.publisher
+              }}/{{ comic.edition }}/{{ comic.redni }}.jpg"
+              style="width: 200px; height: 250px"
+            />
           </a>
-   
         </div>
 
-        <div> {{comic.edition}}   </div>
-        <div> {{comic.name}}</div>
-        <div> #{{comic.redni}}</div>
+        <div>{{ comic.edition }}</div>
+        <div>{{ comic.name }}</div>
+        <div>#{{ comic.redni }}</div>
       </li>
     </ul>
   </div>

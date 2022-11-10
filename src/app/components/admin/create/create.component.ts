@@ -1,46 +1,39 @@
-import { Component, OnInit,NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
 })
 export class CreateComponent implements OnInit {
-
   submitted = false;
   comicForm!: FormGroup;
-
 
   constructor(
     public fb: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private apiService: ApiService) 
-    { this.mainForm();}
-
-  ngOnInit(): void {
+    private apiService: ApiService
+  ) {
+    this.mainForm();
   }
+
+  ngOnInit(): void {}
   mainForm() {
-   
     this.comicForm = this.fb.group({
       name: ['', [Validators.required]],
-      edition: ['', [Validators.required, ]],
-      redni: ['', [Validators.required, ]],  
-      own: [ ],
-      wish: [ ],
+      edition: ['', [Validators.required]],
+      redni: ['', [Validators.required]],
       comic: ['', [Validators.required]],
       publisher: ['', [Validators.required]],
-      dateIssued: []
- 
-
+      dateIssued: [],
     });
-
   }
 
-  get myForm(){
+  get myForm() {
     return this.comicForm.controls;
   }
 
@@ -52,7 +45,7 @@ export class CreateComponent implements OnInit {
       return this.apiService.createComic(this.comicForm.value).subscribe({
         complete: () => {
           console.log('Comic successfully created!'),
-            this.ngZone.run(() => this.router.navigateByUrl('/create'));
+            this.ngZone.run(() => this.router.navigateByUrl('/list'));
         },
         error: (e) => {
           console.log(e);
@@ -60,5 +53,4 @@ export class CreateComponent implements OnInit {
       });
     }
   }
-
-  }
+}

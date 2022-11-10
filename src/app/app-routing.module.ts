@@ -16,31 +16,34 @@ import { UserListComponent } from './components/admin/user-list/user-list.compon
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { ProfileComponent } from './components/authentication/profile/profile.component';
 import { AuthGuardService } from './services/auth-guard.service';
-
+import { UserEditComponent } from './components/admin/user-edit/user-edit.component';
 
 const routes: Routes = [
-  {path: '', component: ComicsComponent},
-  { path: 'my-collection' ,component: MyCollectionComponent },
-  { path: 'comics' ,component: ComicsComponent },
-  { path: 'create' ,component: CreateComponent },
+  { path: '', component: ComicsComponent },
+  { path: 'my-collection', component: MyCollectionComponent },
+  { path: 'comics', component: ComicsComponent },
+  { path: 'create', component: CreateComponent },
   { path: 'edit/:id', component: EditComponent },
+  { path: 'user-edit/:id', component: UserEditComponent },
   { path: 'comic-detail/:id', component: ComicDetailComponent },
-  { path: 'list' ,component: ListComponent },
-  { path: 'main' ,component: ComicsComponent },
-  { path: 'admin' ,component: AdminComponent },
-  { path: 'file-upload' ,component: FileUploadComponent },
-  { path: 'add-user' ,component: UserCreateComponent },
-  { path: 'user-list' ,component: UserListComponent },
+  { path: 'list', component: ListComponent },
+  { path: 'main', component: ComicsComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'file-upload', component: FileUploadComponent },
+  { path: 'add-user', component: UserCreateComponent },
+  { path: 'user-list', component: UserListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardService],
+  },
   { path: '**', component: PageNotFoundComponent },
-
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

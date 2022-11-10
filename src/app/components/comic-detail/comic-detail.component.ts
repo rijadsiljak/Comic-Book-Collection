@@ -106,23 +106,6 @@ export class ComicDetailComponent implements OnInit {
 
 
 
-  onSubmit() {
-    this.submitted = true;
-    {
-      if (window.confirm('Are you sure?')) {
-        let id = this.actRoute.snapshot.paramMap.get('id');
-        this.apiService.updateComicOwn(id)
-          .subscribe(res => {
-            this.router.navigateByUrl('/list');
-            console.log('Content updated successfully!')
-          }, (error) => {
-            console.log(error)
-          })
-      }
-
-    }
-  }
-
 
   addComic() {
     this.submitted = true;

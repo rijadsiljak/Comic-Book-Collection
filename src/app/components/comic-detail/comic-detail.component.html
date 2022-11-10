@@ -1,30 +1,38 @@
 <div class="container" align="center">
-    <table *ngIf="comic$ | async as comic" align="center">
-   
+  <table *ngIf="comic$ | async as comic" align="center">
+    <tr class="comics">
+      Naslov :
+      {{
+        comic.name
+      }}
+    </tr>
 
-        <tr class="comics">Naslov : {{comic.name}}</tr>
-   
-        <tr class="comics">Broj : {{comic.redni}}</tr>
-        
-        <tr class="comics"><img [ngClass]="{own: comic.own}"  
-            src ="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
-            style="width:400px;height:450px;" />  </tr>
+    <tr class="comics">
+      Broj :
+      {{
+        comic.redni
+      }}
+    </tr>
 
-        <tr class="comics">Edicija : {{comic.edition}}</tr>
+    <tr class="comics">
+      <img
+        [ngClass]="{ own: comic.own }"
+        src="/assets/pictures/STRIPOVI/{{ comic.comic }}/{{
+          comic.publisher
+        }}/{{ comic.edition }}/{{ comic.redni }}.jpg"
+        style="width: 400px; height: 450px"
+      />
+    </tr>
 
-
-     
-   </table>
-
-
+    <tr class="comics">
+      Edicija :
+      {{
+        comic.edition
+      }}
+    </tr>
+  </table>
 </div>
-<form (submit)="onSubmit()" align="center"> 
-    
-        <button type="submit" > Add to collection</button>
 
-</form>
-<form (submit)="addComic()" align="center"> 
-    
-    <button type="submit" > Add to user collection</button>
-    
+<form (submit)="addComic()" align="center">
+  <button type="submit">Add to user collection</button>
 </form>

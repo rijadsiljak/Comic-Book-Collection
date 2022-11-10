@@ -6,7 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-comics',
   templateUrl: './comics.component.html',
-  styleUrls: ['./comics.component.css']
+  styleUrls: ['./comics.component.css'],
 })
 export class ComicsComponent implements OnInit {
   data = [];
@@ -14,28 +14,17 @@ export class ComicsComponent implements OnInit {
   page = 0;
   size = 9;
   length = 0;
-  constructor(private apiService: ApiService) {
-
-
-  }
-
-
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-
     this.getData({ pageIndex: this.page, pageSize: this.size });
-
   }
-
-
 
   getData(obj) {
-    this.apiService.getComics(obj.pageIndex,obj.pageSize).subscribe((data) => {
-      this.Comic = data['items'];   
-      this.length=data['lenght'];
-       this.data = this.Comic;
+    this.apiService.getComics(obj.pageIndex, obj.pageSize).subscribe((data) => {
+      this.Comic = data['items'];
+      this.length = data['lenght'];
+      this.data = this.Comic;
     });
-
   }
-
 }
