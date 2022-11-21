@@ -1,43 +1,47 @@
-<div class="containter">
-  <!-- No data message -->
-  <div *ngIf="User.length <= 0">
-    <p class="alet alert-warning text-center">There is no user added yet!</p>
-  </div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
 
-  <!-- Users list -->
-  <table class="" *ngIf="User.length > 0">
-    <thead class="">
-      <tr>
-        <th scope="col center">Name</th>
+  <!-- Position Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
 
-        <th scope="col">E-mail</th>
-        <th scope="col">Group</th>
+  <!-- Name Column -->
+  <ng-container matColumnDef="E-Mail">
+    <th mat-header-cell *matHeaderCellDef>e-mail</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
 
-        <th scope="col center">Update/Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of User; let i = index">
-        <td>{{ user.name }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.group }}</td>
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Group">
+    <th mat-header-cell *matHeaderCellDef>Group</th>
+    <td mat-cell *matCellDef="let element">{{ element.group }}</td>
+  </ng-container>
 
-        <td class="text-center edit-block">
-          <span class="edit" [routerLink]="['/user-edit/', user._id]">
-            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-          </span>
-        </td>
+  <ng-container matColumnDef="Edit">
+    <th mat-header-cell *matHeaderCellDef>Edit</th>
+    <td mat-cell *matCellDef="let element">
+      <span class="edit" [routerLink]="['/user-edit/', element._id]">
+        <button type="button" class="btn btn-primary btn-sm">Edit</button>
+      </span>
+    </td>
+  </ng-container>
 
-        <td class="text-center edit-block">
-          <span
-            class="delete"
-            (click)="removeUser(user, i)"
-            [routerLink]="['/user-list']"
-          >
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <ng-container matColumnDef="Delete">
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
+    <td mat-cell *matCellDef="let element">
+      <span
+        class="delete"
+        (click)="removeUser(element, element._id)"
+        [routerLink]="['/list']"
+      >
+        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+      </span>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

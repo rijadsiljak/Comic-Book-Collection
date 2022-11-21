@@ -17,7 +17,7 @@ body {
 
 nav {
   background-color: rgb(6, 23, 40);
-
+  align-items: center;
 }
 
 a {
@@ -25,7 +25,6 @@ a {
   color: rgb(255, 255, 255);
   color-scheme: inherit;
   text-decoration: none;
-
 }
 
 li {
@@ -47,10 +46,8 @@ li {
   text-align: center;
   align-items: center;
   justify-content: center;
-
 }
 .container {
-  max-width: auto;
   margin: 10px auto;
 
   min-height: 300px;
@@ -60,9 +57,20 @@ li {
   text-align: center;
   align-items: center;
   justify-content: center;
+  width: 500px;
   display: flex;
+  flex-wrap: wrap;
 }
 
+.container img {
+  padding: 5px;
+}
+.container img:hover {
+  padding: 10px;
+  box-sizing: border-box;
+  border-style: groove;
+  border-color: darkgoldenrod;
+}
 .main {
   max-width: auto;
   margin: 10px auto;
@@ -157,47 +165,43 @@ li {
   height: 20px;
 }
 
-.serv div
- {
+.serv div {
   justify-content: center;
   display: flex;
   padding-inline-start: 0cm;
-  
- }
+}
 
- 
-body { 
+body {
   position: absolute;
   padding: 0 0;
   margin: 0 0;
   height: 100%;
   width: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow: auto;
 }
 .paginator {
-
-    float: right;
+  float: right;
 
   clear: both;
 }
 
 .basic-container {
-height: 100%;
-width: 100%;
-overflow: auto;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 
 .version-info {
-font-size: 8pt;
-float: right;
+  font-size: 8pt;
+  float: right;
 }
 
 .serv ul {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content:flex;
+  justify-content: flex;
   padding: 0px;
   width: 1000px;
 }
@@ -207,46 +211,41 @@ float: right;
   left: 50%;
   margin-top: -50px;
   margin-left: -100px;
-  border:rgb(255, 255, 255);
+  border: rgb(255, 255, 255);
   border-style: inset;
   border-spacing: ch;
 }
 
 .serv li {
-  
   list-style: none;
- margin-bottom: 25px;
+  margin-bottom: 25px;
   flex: 1 3 33.333333%;
 }
 
 .align {
-
   max-width: auto;
   margin: 30px auto;
   overflow: auto;
   min-height: auto;
   text-align: center;
-
 }
 
-
-
 .star {
-  visibility:hidden;
-  font-size:30px;
-  cursor:pointer;
+  visibility: hidden;
+  font-size: 30px;
+  cursor: pointer;
   color: #fff;
 }
 .star:before {
- content: "\2605";
- position: absolute;
- color:rgb(255, 255, 255);
- visibility:visible;
+  content: "\2605";
+  position: absolute;
+  color: rgb(255, 255, 255);
+  visibility: visible;
 }
 .star:checked:before {
- content: "\2605";
- color:gold;
- position: absolute;
+  content: "\2605";
+  color: gold;
+  position: absolute;
 }
 .detalji {
   text-decoration: none;
@@ -268,7 +267,6 @@ float: right;
   text-align: center;
 }
 
-
 .item3 {
   grid-area: main;
 }
@@ -277,18 +275,15 @@ float: right;
   grid-area: right;
 }
 
-
 .grid-container {
   display: grid;
-  grid-template-areas:
-    'menu  main   '
-  ;
+  grid-template-areas: "menu  main   ";
   gap: 10px;
   background-color: steelblue;
   padding: 10px;
 }
 
-.grid-container>div {
+.grid-container > div {
   background-color: whitesmoke;
   text-align: center;
   justify-content: center;
@@ -296,8 +291,6 @@ float: right;
   padding: 20px 0;
   font-size: 30px;
 }
-
-
 
 .comic {
   background: #f4f4f4;
@@ -307,11 +300,9 @@ float: right;
   justify-content: center;
   align-items: center;
   max-height: 220px;
-
 }
 
 .border {
-
   border-style: groove;
 }
 
@@ -324,10 +315,62 @@ float: right;
 }
 
 .comicList {
- 
   text-align: center;
   width: min-content;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+router-outlet ~ * {
+  position: sticky;
+  height: 100%;
+  width: 90%;
+  display: block;
+  margin: auto;
+}
+
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav-logout a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+.main {
+  margin: 20px;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

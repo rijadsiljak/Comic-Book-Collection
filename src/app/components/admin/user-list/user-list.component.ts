@@ -8,6 +8,9 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class UserListComponent implements OnInit {
   User: any = [];
+  dataSource: any = [];
+
+  displayedColumns: string[] = ['Name', 'E-Mail', 'Group', 'Edit', 'Delete'];
 
   constructor(private apiService: ApiService) {
     this.readUser();
@@ -18,7 +21,7 @@ export class UserListComponent implements OnInit {
   readUser() {
     this.apiService.getUsers().subscribe((data) => {
       this.User = data;
-      7;
+      this.dataSource = this.User;
     });
   }
 

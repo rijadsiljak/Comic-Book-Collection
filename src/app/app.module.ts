@@ -32,6 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { ProfileComponent } from './components/authentication/profile/profile.component';
 import { UserEditComponent } from './components/admin/user-edit/user-edit.component';
+import { MatTable, MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { UserEditComponent } from './components/admin/user-edit/user-edit.compon
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatTableModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

@@ -1,17 +1,19 @@
-<div >
-  <div >
-    <div id="navbar-main">
-      <ul >
+<div class="topnav">
+  <div>
+    <div>
+      <ul>
         <li><a routerLink="/comics">Home</a></li>
         <li><a routerLink="/my-collection">My Comics</a></li>
         <li><a routerLink="/admin">Admin</a></li>
       </ul>
 
-
       <ul>
         <li *ngIf="!auth.isLoggedIn()"><a routerLink="/login">Sign in</a></li>
-        <li *ngIf="auth.isLoggedIn()"><a routerLink="/profile">{{ auth.getUserDetails()?.name }}</a></li>
-        <li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li>
+        <li *ngIf="auth.isLoggedIn()"></li>
+        <li *ngIf="auth.isLoggedIn()" class="topnav-logout">
+          <a routerLink="/profile">{{ auth.getUserDetails()?.name }}</a>
+          <a (click)="auth.logout()">Logout</a>
+        </li>
       </ul>
     </div>
   </div>
