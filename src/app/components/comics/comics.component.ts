@@ -10,21 +10,56 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class ComicsComponent implements OnInit {
   data = [];
+  dataSet = [];
   Comic: any = [];
+  default: string = 'Svi';
+  Strip: any = [];
   page = 0;
   size = 9;
   length = 0;
-  constructor(private apiService: ApiService) {}
+  comicPublisher: string;
+  cPublisher: string = 'SVI';
+  selected: string;
+  constructor(private apiService: ApiService) {
+    this.getPublishers();
+  }
 
   ngOnInit(): void {
-    this.getData({ pageIndex: this.page, pageSize: this.size });
+    this.getData({
+      pageIndex: this.page,
+      pageSize: this.size,
+      comicPublisher: '',
+    });
   }
 
   getData(obj) {
-    this.apiService.getComics(obj.pageIndex, obj.pageSize).subscribe((data) => {
-      this.Comic = data['items'];
-      this.length = data['lenght'];
-      this.data = this.Comic;
+    this.apiService
+      .getComics(obj.pageIndex, obj.pageSize, this.cPublisher)
+      .subscribe((data) => {
+        this.Comic = data['items'];
+        this.length = data['lenght'];
+        this.data = this.Comic;
+      });
+  }
+
+  getNewData(obj) {
+    this.apiService
+      .getComics(this.page, this.size, this.cPublisher)
+      .subscribe((data) => {
+        this.Comic = data['items'];
+        this.length = data['lenght'];
+        this.data = this.Comic;
+      });
+  }
+
+  getPublishers() {
+    this.apiService.listPublishers().subscribe((dataSet) => {
+      this.Strip = dataSet;
     });
+  }
+
+  changeSelection(selection) {
+    console.log(selection.value);
+    this.selected = selection.value;
   }
 }

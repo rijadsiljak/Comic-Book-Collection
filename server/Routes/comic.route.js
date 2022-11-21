@@ -10,11 +10,13 @@ var auth = jwt({
 });
 
 var ctrlProfile = require("../controllers/profile");
+
 var ctrlAuth = require("../controllers/authentication");
 
 // comic model
 let Comic = require("../Model/Comic");
 let User = require("../Model/User");
+const { string } = require("yargs");
 
 // profile
 comicRoute.get("/profile", auth, ctrlProfile.profileRead);
@@ -122,6 +124,8 @@ comicRoute.route("/create").post((req, res, next) => {
 comicRoute.route("/").get((req, res, next) => {
   pageSize = parseInt(req.query.pageSize);
   pageIndex = parseInt(req.query.pageIndex);
+  comicPublisher = req.query.comicPublisher;
+
   if (pageSize == null || pageSize < 0) {
     pageSize = 9;
   }
@@ -129,8 +133,9 @@ comicRoute.route("/").get((req, res, next) => {
     pageIndex = 0;
   }
 
-  Comic.find()
+  Comic.find(comicPublisher != "SVI" ? { publisher: comicPublisher } : {})
     .limit(pageSize)
+
     .skip(pageSize * pageIndex)
     .sort({ dateIssued: -1 })
     .exec((error, data) => {
@@ -153,6 +158,16 @@ comicRoute.route("/").get((req, res, next) => {
 
 comicRoute.route("/owned").get((req, res, next) => {
   Comic.find({ own: true }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+comicRoute.route("/publisher").get((req, res, next) => {
+  Comic.distinct("publisher", (error, data) => {
     if (error) {
       return next(error);
     } else {

@@ -25,11 +25,10 @@ import { MyCollectionComponent } from './components/my-collection/my-collection.
 import { LoginComponent } from './components/authentication/login/login.component';
 import { UserCreateComponent } from './components/admin/user-create/user-create.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
-
+import { MatSelectModule } from '@angular/material/select';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { ProfileComponent } from './components/authentication/profile/profile.component';
 import { UserEditComponent } from './components/admin/user-edit/user-edit.component';
@@ -67,6 +66,7 @@ import { UserEditComponent } from './components/admin/user-edit/user-edit.compon
     ReactiveFormsModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

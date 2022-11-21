@@ -1,48 +1,55 @@
 <div class="containter">
-    <!-- No data message -->
-    <div *ngIf="Comic.length <= 0">
-      <p class="alet alert-warning text-center">There is no comic added yet!</p>
-    </div>
-  
-  
-    <!-- Comics list -->
-    <table class="" *ngIf="Comic.length > 0">
-      <thead class="">
-        <tr>
-
-          <th scope="col center">Name</th>
-          <th scope="col span">Ordinal</th>
-          <th scope="col">Edition</th>
-          <th scope="col center">Cover</th> 
-          <th scope="col">Comic</th>
-   
-          <th scope="col center">Publisher</th>          
-          <th scope="col center">Update/Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let comic of Comic  ; let i = index  "  >
-   
-          <td>{{comic.name}}</td>
-          <td>{{comic.redni}}</td>
-          <td>{{comic.edition}}</td>          
-  
-  
-     <td class="containter"><img [ngClass]="{own: comic.own}" class="comic" 
-      src ="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
-       style="width:200px;height:250px;"/>  </td>
-       <td>{{comic.comic}}</td>
-
-       <td>{{comic.publisher}}</td>
-          <td class="text-center edit-block">
-            <span class="edit" [routerLink]="['/edit/', comic._id]">
-              <button type="button" class="btn btn-primary btn-sm">Edit</button>
-            </span>
-            <span class="delete" (click)="removeComic(comic, comic._id)" [routerLink]="['/list']">
-              <button type="button" class="btn btn-danger btn-sm">Delete</button>
-            </span> </td>
-          
-        </tr>
-      </tbody>
-    </table>
+  <!-- No data message -->
+  <div *ngIf="Comic.length <= 0">
+    <p class="alet alert-warning text-center">There is no comic added yet!</p>
   </div>
+
+  <!-- Comics list -->
+  <table class="" *ngIf="Comic.length > 0">
+    <thead class="">
+      <tr>
+        <th scope="col center">Name</th>
+        <th scope="col span">Ordinal</th>
+        <th scope="col">Edition</th>
+        <th scope="col center">Cover</th>
+        <th scope="col">Comic</th>
+
+        <th scope="col center">Publisher</th>
+        <th scope="col center">Update/Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let comic of Comic; let i = index">
+        <td>{{ comic.name }}</td>
+        <td>{{ comic.redni }}</td>
+        <td>{{ comic.edition }}</td>
+
+        <td class="containter">
+          <img
+            [ngClass]="{ own: comic.own }"
+            class="comic"
+            src="/assets/pictures/STRIPOVI/{{ comic.comic }}/{{
+              comic.publisher
+            }}/{{ comic.edition }}/{{ comic.redni }}.jpg"
+            style="width: 200px; height: 250px"
+          />
+        </td>
+        <td>{{ comic.comic }}</td>
+
+        <td>{{ comic.publisher }}</td>
+        <td class="text-center edit-block">
+          <span class="edit" [routerLink]="['/edit/', comic._id]">
+            <button type="button" class="btn btn-primary btn-sm">Edit</button>
+          </span>
+          <span
+            class="delete"
+            (click)="removeComic(comic, comic._id)"
+            [routerLink]="['/list']"
+          >
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

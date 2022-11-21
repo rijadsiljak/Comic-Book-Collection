@@ -1,17 +1,20 @@
-div 
-{justify-content: flex-start;
-display: flexbox;
-grid-auto-flow: row;
+div {
+  justify-content: flex-start;
+  display: flexbox;
+  grid-auto-flow: row;
 
-padding: 0px;
-width: auto;
- }
- .paginator
- {
-    justify-content: center;
-display:grid;
-flex-wrap: wrap;
+  padding: 0px;
+  width: auto;
+}
+.paginator {
+  justify-content: center;
+  display: grid;
+  flex-wrap: wrap;
 
-padding: 0px;
-width: fit-content;
- }
+  padding: 0px;
+  width: fit-content;
+}
+.mat-select {
+  background-color: antiquewhite;
+  color: aliceblue;
+}

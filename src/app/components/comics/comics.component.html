@@ -4,29 +4,63 @@
     <p class="alet alert-warning text-center">There is no comic added yet!</p>
   </div>
 
+  <div>
+    <!-- No data message -->
+    <div *ngIf="Strip.length <= 0">
+      <p class="alet alert-warning text-center">Prazno!</p>
+    </div>
 
-  <div class="container">
-    <ng-container *ngFor="let comic of data; let i = index">
-      <ul>
-        <li>
-          <div>
-            <a> <input value="{{comic.own}}" class="star" type="checkbox"></a>
-            <a>
-              <img [routerLink]="['/comic-detail/', comic._id]" class="border"
-                src="/assets/pictures/STRIPOVI/{{comic.comic}}/{{comic.publisher}}/{{comic.edition}}/{{comic.redni}}.jpg"
-                style="width:200px;height:250px;" />
-            </a>
+    <form>
+      <mat-form-field>
+        <mat-label>Publishers</mat-label>
+        <mat-select
+          [value]="default"
+          [(ngModel)]="cPublisher"
+          (selectionChange)="getNewData($event)"
+          name="Strip"
+        >
+          <mat-option *ngFor="let s of Strip" [value]="s">
+            {{ s }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
 
-          </div>
-          <div> {{comic.edition}} </div>
-          <div> {{comic.name}}</div>
-          <div> #{{comic.redni}}</div>
-        </li>
-      </ul>
-    </ng-container>
+    <div class="container">
+      <ng-container *ngFor="let comic of data; let i = index">
+        <ul>
+          <li>
+            <div>
+              <a>
+                <input value="{{ comic.own }}" class="star" type="checkbox"
+              /></a>
+              <a>
+                <img
+                  [routerLink]="['/comic-detail/', comic._id]"
+                  class="border"
+                  src="/assets/pictures/STRIPOVI/{{ comic.comic }}/{{
+                    comic.publisher
+                  }}/{{ comic.edition }}/{{ comic.redni }}.jpg"
+                  style="width: 200px; height: 250px"
+                />
+              </a>
+            </div>
+            <div>{{ comic.edition }}</div>
+            <div>{{ comic.name }}</div>
+            <div>#{{ comic.redni }}</div>
+          </li>
+        </ul>
+      </ng-container>
+    </div>
 
+    <mat-paginator
+      [length]="length"
+      [pageSize]="size"
+      [pageIndex]="page"
+      [pageSizeOptions]="[3, 9, 27]"
+      (page)="getData($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
   </div>
-
-  <mat-paginator [length]="length" [pageSize]="size" [pageIndex]="page" [pageSizeOptions]="[3,9,27]"
-    (page)="getData($event)">
-  </mat-paginator>
+</div>

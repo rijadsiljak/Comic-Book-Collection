@@ -83,9 +83,13 @@ export class ApiService {
   }
 
   // Get all comics lists
-  getComics(pageIndex, pageSize) {
+  getComics(pageIndex, pageSize, comicPublisher) {
     return this.http.get(`${this.baseUri}`, {
-      params: { pageIndex: pageIndex, pageSize: pageSize },
+      params: {
+        pageIndex: pageIndex,
+        pageSize: pageSize,
+        comicPublisher: comicPublisher,
+      },
     });
   }
 
@@ -122,6 +126,12 @@ export class ApiService {
   // list all comics
   listComics() {
     let url = `${this.baseUri}/list`;
+    return this.http.get(url);
+  }
+
+  // list all comics
+  listPublishers() {
+    let url = `${this.baseUri}/publisher`;
     return this.http.get(url);
   }
 
