@@ -1,58 +1,135 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-                    The actual rendered columns are set as a property on the row definition" -->
+<!--
+<div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="Ordinal">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.redni }}</td>
+    </ng-container>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="Ordinal">
-    <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let element">{{ element.redni }}</td>
-  </ng-container>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="Name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-  </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="Comic">
-    <th mat-header-cell *matHeaderCellDef>Comic</th>
-    <td mat-cell *matCellDef="let element">{{ element.comic }}</td>
-  </ng-container>
+    <ng-container matColumnDef="Comic">
+      <th mat-header-cell *matHeaderCellDef>Comic</th>
+      <td mat-cell *matCellDef="let element">{{ element.comic }}</td>
+    </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="Publisher">
-    <th mat-header-cell *matHeaderCellDef>Publisher</th>
-    <td mat-cell *matCellDef="let element">{{ element.publisher }}</td>
-  </ng-container>
 
-  <ng-container matColumnDef="Edition">
-    <th mat-header-cell *matHeaderCellDef>Edition</th>
-    <td mat-cell *matCellDef="let element">{{ element.edition }}</td>
-  </ng-container>
+    <ng-container matColumnDef="Publisher">
+      <th mat-header-cell *matHeaderCellDef>Publisher</th>
+      <td mat-cell *matCellDef="let element">{{ element.publisher }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="Edit">
-    <th mat-header-cell *matHeaderCellDef>Edit</th>
-    <td mat-cell *matCellDef="let element">
-      <span class="edit" [routerLink]="['/edit/', element._id]">
-        <button type="button" class="btn btn-primary btn-sm">Edit</button>
-      </span>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="Edition">
+      <th mat-header-cell *matHeaderCellDef>Edition</th>
+      <td mat-cell *matCellDef="let element">{{ element.edition }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="Delete">
-    <th mat-header-cell *matHeaderCellDef>Delete</th>
-    <td mat-cell *matCellDef="let element">
-      <span
-        class="delete"
-        (click)="removeComic(element, element._id)"
-        [routerLink]="['/list']"
-      >
-        <button type="button" class="btn btn-danger btn-sm">Delete</button>
-      </span>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="Edit">
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="edit" [routerLink]="['/edit/', element._id]">
+          <button type="button" class="btn btn-primary btn-sm">Edit</button>
+        </span>
+      </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <span
+          class="delete"
+          (click)="removeComic(element, element._id)"
+          [routerLink]="['/list']"
+        >
+          <button type="button" class="btn btn-danger btn-sm">Delete</button>
+        </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+</div>-->
+
+<form>
+  <mat-form-field>
+    <mat-label>Publishers</mat-label>
+    <mat-select
+      [value]="default"
+      [(ngModel)]="cPublisher"
+      (selectionChange)="getNewData($event)"
+      name="Strip"
+    >
+      <mat-option value="SVI"></mat-option>
+      <mat-option *ngFor="let s of Strip" [value]="s">
+        {{ s }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="Ordinal">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.redni }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Comic">
+      <th mat-header-cell *matHeaderCellDef>Comic</th>
+      <td mat-cell *matCellDef="let element">{{ element.comic }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Publisher">
+      <th mat-header-cell *matHeaderCellDef>Publisher</th>
+      <td mat-cell *matCellDef="let element">{{ element.publisher }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Edition">
+      <th mat-header-cell *matHeaderCellDef>Edition</th>
+      <td mat-cell *matCellDef="let element">{{ element.edition }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Edit">
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="edit" [routerLink]="['/edit/', element._id]">
+          <button type="button" class="btn btn-primary btn-sm">Edit</button>
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <span
+          class="delete"
+          (click)="removeComic(element, element._id)"
+          [routerLink]="['/list']"
+        >
+          <button type="button" class="btn btn-danger btn-sm">Delete</button>
+        </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
