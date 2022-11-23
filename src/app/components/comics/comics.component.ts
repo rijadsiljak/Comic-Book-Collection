@@ -12,14 +12,15 @@ export class ComicsComponent implements OnInit {
   data = [];
   dataSet = [];
   Comic: any = [];
-  default: string = 'Svi';
+  default: string;
   Strip: any = [];
   page = 0;
   size = 9;
   length = 0;
   comicPublisher: string;
-  cPublisher: string = 'SVI';
+  cPublisher: string;
   selected: string;
+
   constructor(private apiService: ApiService) {
     this.getPublishers();
   }

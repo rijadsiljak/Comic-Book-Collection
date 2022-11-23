@@ -12,6 +12,16 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListComponent implements OnInit {
   Comic: any = [];
   dataSource: any = [];
+  data = [];
+  dataSet = [];
+  default: string = 'Svi';
+  Strip: any = [];
+  page = 0;
+  size = 5;
+  length = 0;
+  comicPublisher: string;
+  cPublisher: string = 'SVI';
+  selected: string;
 
   displayedColumns: string[] = [
     'Ordinal',
@@ -24,15 +34,40 @@ export class ListComponent implements OnInit {
   ];
 
   constructor(private apiService: ApiService) {
-    this.readComic();
+    this.getPublishers();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getData({
+      pageIndex: this.page,
+      pageSize: this.size,
+      comicPublisher: '',
+    });
+  }
 
-  readComic() {
-    this.apiService.listComics().subscribe((data) => {
-      this.Comic = data;
-      this.dataSource = this.Comic;
+  getData(obj) {
+    this.apiService
+      .getComics(obj.pageIndex, obj.pageSize, this.cPublisher)
+      .subscribe((data) => {
+        this.Comic = data['items'];
+        this.length = data['lenght'];
+        this.dataSource = this.Comic;
+      });
+  }
+
+  getNewData(obj) {
+    this.apiService
+      .getComics(this.page, this.size, this.cPublisher)
+      .subscribe((data) => {
+        this.Comic = data['items'];
+        this.length = data['lenght'];
+        this.dataSource = this.Comic;
+      });
+  }
+
+  getPublishers() {
+    this.apiService.listPublishers().subscribe((dataSet) => {
+      this.Strip = dataSet;
     });
   }
 

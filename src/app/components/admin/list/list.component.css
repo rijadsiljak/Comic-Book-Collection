@@ -1,5 +1,5 @@
 table {
-  width: 75%;
+  width: 100%;
   align-items: center;
 }
 
@@ -11,4 +11,8 @@ table {
 td,
 th {
   width: 25%;
+}
+.mat-select {
+  background-color: antiquewhite;
+  color: aliceblue;
 }

@@ -135,10 +135,20 @@ export class ApiService {
     return this.http.get(url);
   }
 
-  // Get all users lists
-  getUsers() {
-    const url = `${this.baseUri}/user-list`;
+  listUserGroups() {
+    let url = `${this.baseUri}/list-uGroups`;
     return this.http.get(url);
+  }
+
+  // Get all users lists
+  getUsers(pageIndex, pageSize, uGroup) {
+    return this.http.get(`${this.baseUri}/user-list`, {
+      params: {
+        pageIndex: pageIndex,
+        pageSize: pageSize,
+        uGroup: uGroup,
+      },
+    });
   }
 
   getMyCollection(id: any): Observable<any> {

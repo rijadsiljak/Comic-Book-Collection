@@ -26,15 +26,38 @@ comicRoute.post("/register", ctrlAuth.register);
 
 comicRoute.post("/login", ctrlAuth.login);
 
-// Get All Users
+// Get All Comics
 comicRoute.route("/user-list").get((req, res, next) => {
-  User.find((error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
+  pageSize = parseInt(req.query.pageSize);
+  pageIndex = parseInt(req.query.pageIndex);
+  uGroup = req.query.uGroup;
+
+  if (pageSize == null || pageSize < 0) {
+    pageSize = 9;
+  }
+  if (pageIndex == null || pageIndex < 0) {
+    pageIndex = 0;
+  }
+
+  User.find(uGroup != "undefined" ? { group: uGroup } : {})
+    .limit(pageSize)
+    .skip(pageSize * pageIndex)
+    .exec((error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        Comic.count().exec((error, data2) => {
+          if (error) {
+            return next(error);
+          } else {
+            responseData = {};
+            responseData.items = data;
+            responseData.lenght = data2;
+            res.json(responseData);
+          }
+        });
+      }
+    });
 });
 
 // Get All Comics
@@ -133,9 +156,8 @@ comicRoute.route("/").get((req, res, next) => {
     pageIndex = 0;
   }
 
-  Comic.find(comicPublisher != "SVI" ? { publisher: comicPublisher } : {})
+  Comic.find(comicPublisher != "undefined" ? { publisher: comicPublisher } : {})
     .limit(pageSize)
-
     .skip(pageSize * pageIndex)
     .sort({ dateIssued: -1 })
     .exec((error, data) => {
@@ -168,6 +190,16 @@ comicRoute.route("/owned").get((req, res, next) => {
 
 comicRoute.route("/publisher").get((req, res, next) => {
   Comic.distinct("publisher", (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+comicRoute.route("/list-uGroups").get((req, res, next) => {
+  User.distinct("group", (error, data) => {
     if (error) {
       return next(error);
     } else {
