@@ -1,17 +1,17 @@
 <a class="topnav-banner"><h1>Comic Book Addiction</h1></a>
 
-<div class="topnav">
+<div *ngIf="auth.isLoggedIn()" class="topnav">
   <div>
     <div>
       <ul>
         <li><a routerLink="/comics">Home</a></li>
         <li><a routerLink="/my-collection">My Comics</a></li>
-        <li><a routerLink="/admin">Admin</a></li>
+        <li *ngIf="auth.getUserDetails()?.group == 'Admin'">
+          <a routerLink="/admin">Admin</a>
+        </li>
       </ul>
 
       <ul>
-        <li *ngIf="!auth.isLoggedIn()"><a routerLink="/login">Sign in</a></li>
-        <li *ngIf="auth.isLoggedIn()"></li>
         <li *ngIf="auth.isLoggedIn()" class="topnav-logout">
           <a routerLink="/profile">{{ auth.getUserDetails()?.name }}</a>
           <a (click)="auth.logout()">Logout</a>
@@ -19,6 +19,12 @@
       </ul>
     </div>
   </div>
+</div>
+
+<div *ngIf="!auth.isLoggedIn()" class="topnav">
+  <ul>
+    <li><a routerLink="/login">Sign in</a></li>
+  </ul>
 </div>
 
 <router-outlet></router-outlet>

@@ -62,6 +62,7 @@ userSchema.methods.generateJwt = function () {
       _id: this._id,
       email: this.email,
       name: this.name,
+      group: this.group,
       exp: parseInt(expiry.getTime() / 1000),
     },
     "MY_SECRET"

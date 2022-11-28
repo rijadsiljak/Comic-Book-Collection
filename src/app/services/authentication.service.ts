@@ -7,9 +7,9 @@ export interface UserDetails {
   _id: string;
   email: string;
   name: string;
+  group: string;
   exp: number;
   iat: number;
-  group: string;
 }
 
 interface TokenResponse {

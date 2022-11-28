@@ -1,4 +1,8 @@
-<div class="container">
+<div *ngIf="!auth.isLoggedIn()">
+  You do not have permission to see this site!
+</div>
+
+<div *ngIf="auth.getUserDetails()?.group == 'Admin'" class="container">
   <ul>
     <li>
       <img
