@@ -14,13 +14,13 @@ export class ListComponent implements OnInit {
   dataSource: any = [];
   data = [];
   dataSet = [];
-  default: string = 'Svi';
+  default: string;
   Strip: any = [];
   page = 0;
   size = 5;
   length = 0;
   comicPublisher: string;
-  cPublisher: string = 'SVI';
+  cPublisher: string;
   selected: string;
 
   displayedColumns: string[] = [

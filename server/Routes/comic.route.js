@@ -1,7 +1,8 @@
 const express = require("express");
-var app = express();
+
 const comicRoute = express.Router();
 var jwt = require("express-jwt");
+var passport = require("passport");
 
 var auth = jwt({
   secret: "MY_SECRET",
@@ -16,7 +17,6 @@ var ctrlAuth = require("../controllers/authentication");
 // comic model
 let Comic = require("../Model/Comic");
 let User = require("../Model/User");
-const { string } = require("yargs");
 
 // profile
 comicRoute.get("/profile", auth, ctrlProfile.profileRead);
@@ -27,38 +27,40 @@ comicRoute.post("/register", ctrlAuth.register);
 comicRoute.post("/login", ctrlAuth.login);
 
 // Get All Comics
-comicRoute.route("/user-list").get((req, res, next) => {
-  pageSize = parseInt(req.query.pageSize);
-  pageIndex = parseInt(req.query.pageIndex);
-  uGroup = req.query.uGroup;
+comicRoute
+  .route("/user-list")
+  .get(passport.authenticate("jwt", { session: false }), (req, res, next) => {
+    pageSize = parseInt(req.query.pageSize);
+    pageIndex = parseInt(req.query.pageIndex);
+    uGroup = req.query.uGroup;
 
-  if (pageSize == null || pageSize < 0) {
-    pageSize = 9;
-  }
-  if (pageIndex == null || pageIndex < 0) {
-    pageIndex = 0;
-  }
+    if (pageSize == null || pageSize < 0) {
+      pageSize = 9;
+    }
+    if (pageIndex == null || pageIndex < 0) {
+      pageIndex = 0;
+    }
 
-  User.find(uGroup != "undefined" ? { group: uGroup } : {})
-    .limit(pageSize)
-    .skip(pageSize * pageIndex)
-    .exec((error, data) => {
-      if (error) {
-        return next(error);
-      } else {
-        Comic.count().exec((error, data2) => {
-          if (error) {
-            return next(error);
-          } else {
-            responseData = {};
-            responseData.items = data;
-            responseData.lenght = data2;
-            res.json(responseData);
-          }
-        });
-      }
-    });
-});
+    User.find(uGroup != "undefined" ? { group: uGroup } : {})
+      .limit(pageSize)
+      .skip(pageSize * pageIndex)
+      .exec((error, data) => {
+        if (error) {
+          return next(error);
+        } else {
+          Comic.count().exec((error, data2) => {
+            if (error) {
+              return next(error);
+            } else {
+              responseData = {};
+              responseData.items = data;
+              responseData.lenght = data2;
+              res.json(responseData);
+            }
+          });
+        }
+      });
+  });
 
 // Get All Comics
 comicRoute.route("/list").get((req, res, next) => {
@@ -71,16 +73,6 @@ comicRoute.route("/list").get((req, res, next) => {
   });
 });
 
-/*
-
-    {$lookup:
-        {
-            from: "Comic",
-            localField: "_id",
-            foreignField: "comics_own",
-            as: "books"
-        }}
-        */
 comicRoute.route("/collect").get(async (req, res, next) => {
   try {
     let comics = await User.aggregate([
@@ -133,15 +125,17 @@ comicRoute.route("/delete-user/:id").delete((req, res, next) => {
 });
 
 // Add comic
-comicRoute.route("/create").post((req, res, next) => {
-  Comic.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
+comicRoute
+  .route("/create")
+  .post(passport.authenticate("jwt", { session: false }), (req, res, next) => {
+    Comic.create(req.body, (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.json(data);
+      }
+    });
   });
-});
 
 // Get All Comics
 comicRoute.route("/").get((req, res, next) => {

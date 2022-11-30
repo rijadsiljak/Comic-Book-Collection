@@ -72,7 +72,11 @@ export class ApiService {
 
   createComic(data: any): Observable<any> {
     let url = `${this.baseUri}/create`;
-    return this.http.post(url, data).pipe(catchError(this.errorMgmt));
+    return this.http
+      .post(url, data, {
+        headers: { Authorization: `Bearer ${this.getToken()}` },
+      })
+      .pipe(catchError(this.errorMgmt));
   }
 
   //create a user
@@ -143,6 +147,8 @@ export class ApiService {
   // Get all users lists
   getUsers(pageIndex, pageSize, uGroup) {
     return this.http.get(`${this.baseUri}/user-list`, {
+      headers: { Authorization: `Bearer ${this.getToken()}` },
+
       params: {
         pageIndex: pageIndex,
         pageSize: pageSize,

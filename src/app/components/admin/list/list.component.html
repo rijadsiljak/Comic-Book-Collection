@@ -72,7 +72,7 @@
       (selectionChange)="getNewData($event)"
       name="Strip"
     >
-      <mat-option value="SVI"></mat-option>
+      <mat-option>SVI</mat-option>
       <mat-option *ngFor="let s of Strip" [value]="s">
         {{ s }}
       </mat-option>
@@ -132,4 +132,13 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  <mat-paginator
+    [length]="length"
+    [pageSize]="size"
+    [pageIndex]="page"
+    [pageSizeOptions]="[5, 10, 30]"
+    (page)="getData($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
 </div>

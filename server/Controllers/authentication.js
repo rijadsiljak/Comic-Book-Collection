@@ -33,6 +33,7 @@ module.exports.register = function (req, res, next) {
     });
   });
 };
+
 module.exports.login = function (req, res, next) {
   // if(!req.body.email || !req.body.password) {
   //   sendJSONresponse(res, 400, {
@@ -62,4 +63,66 @@ module.exports.login = function (req, res, next) {
       res.status(401).json(info);
     }
   })(req, res);
+};
+
+module.exports.authentication = {
+  ensureAuth: function (req, res, next) {
+    if (req) {
+      return next();
+    } else {
+      return res.send(401);
+    }
+  },
+
+  ensureAdmin: function (req, res, next) {
+    // ensure authenticated user exists with admin role,
+    // otherwise send 401 response status
+    if (req.user && req.user.group == "Admin") {
+      return next();
+    } else {
+      return res.send(401);
+    }
+  },
+
+  user: function (req, res) {
+    console.log("Sending current-user", req.user);
+    if (!req.user) {
+      return res.json(200, { user: null });
+    }
+    //delete private data from user before sending
+    var user = req.user;
+    return res.json(200, User.filterUser(user));
+  },
+};
+
+var JwtStrategy = require("passport-jwt").Strategy,
+  ExtractJwt = require("passport-jwt").ExtractJwt;
+var opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = "MY_SECRET";
+opts.userProperty = "payload";
+opts.algorithms = ["HS256"];
+
+passport.use(
+  new JwtStrategy(opts, function (jwt_payload, done) {
+    User.findOne({ id: jwt_payload.sub }, function (err, user) {
+      if (err) {
+        return done(err, false);
+      }
+      if (user) {
+        return done(null, user);
+      } else {
+        return done(null, false);
+        // or you could create a new account
+      }
+    });
+  })
+);
+
+var cookieExtractor = function (req) {
+  var token = null;
+  if (req && req.cookies) {
+    token = req.cookies["jwt"];
+  }
+  return token;
 };
